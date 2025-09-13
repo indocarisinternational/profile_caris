@@ -35,7 +35,7 @@ export const courseData: {
   rating: number;
 }[] = [
     {
-      heading: 'Full stack modern javascript',
+      heading: 'airbnb',
       name: "Colt stelle",
       imgSrc: '/images/courses/courseone.png',
       students: 150,
@@ -44,7 +44,7 @@ export const courseData: {
       rating: 4.4,
     },
     {
-      heading: 'Design system with React programme',
+      heading: 'fedex',
       name: "Colt stelle",
       imgSrc: '/images/courses/coursetwo.png',
       students: 130,
@@ -53,7 +53,7 @@ export const courseData: {
       rating: 4.5,
     },
     {
-      heading: 'Design banner with Figma',
+      heading: 'google',
       name: "Colt stelle",
       imgSrc: '/images/courses/coursethree.png',
       students: 120,
@@ -62,7 +62,7 @@ export const courseData: {
       rating: 5,
     },
     {
-      heading: 'We Launch Delia Webflow this Week!',
+      heading: 'hubspot',
       name: "Colt stelle",
       imgSrc: '/images/courses/courseone.png',
       students: 150,
@@ -71,7 +71,7 @@ export const courseData: {
       rating: 5,
     },
     {
-      heading: 'We Launch Delia Webflow this Week!',
+      heading: 'microsoft',
       name: "Colt stelle",
       imgSrc: '/images/courses/coursetwo.png',
       students: 150,
@@ -80,7 +80,7 @@ export const courseData: {
       rating: 5,
     },
     {
-      heading: 'We Launch Delia Webflow this Week!',
+      heading: 'walmart',
       name: "Colt stelle",
       imgSrc: '/images/courses/coursethree.png',
       students: 150,
@@ -93,32 +93,32 @@ export const courseData: {
 export const MentorData: { profession: string; name: string; imgSrc: string }[] = [
   {
     profession: 'Senior UX Designer',
-    name: 'Shoo Thar Mien',
+    name: 'Wafiq Muhammad Abdul Aziz',
     imgSrc: '/images/mentor/user3.png',
   },
   {
     profession: 'Senior UX Designer',
-    name: 'Shoo Thar Mien',
+    name: 'Wafiq Muhammad Abdul Aziz',
     imgSrc: '/images/mentor/user2.png',
   },
   {
     profession: 'Senior UX Designer',
-    name: 'Shoo Thar Mien',
+    name: 'Wafiq Muhammad Abdul Aziz',
     imgSrc: '/images/mentor/user1.png',
   },
   {
     profession: 'Senior UX Designer',
-    name: 'Shoo Thar Mien',
+    name: 'Wafiq Muhammad Abdul Aziz',
     imgSrc: '/images/mentor/user3.png',
   },
   {
     profession: 'Senior UX Designer',
-    name: 'Shoo Thar Mien',
+    name: 'Wafiq Muhammad Abdul Aziz',
     imgSrc: '/images/mentor/user2.png',
   },
   {
     profession: 'Senior UX Designer',
-    name: 'Shoo Thar Mien',
+    name: 'Wafiq Muhammad Abdul Aziz',
     imgSrc: '/images/mentor/user1.png',
   },
 ]

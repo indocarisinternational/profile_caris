@@ -18,13 +18,15 @@ const Hero = () => {
               </p>
             </div>
             <h1 className="text-midnight_text text-4xl sm:text-5xl font-semibold pt-5 lg:pt-0">
-              Advance your engineering skills with us.
+              {/* Advance your engineering skills with us. */}
+              We Create Scalable and Innovative Digital Solutions
             </h1>
             <h3 className="text-black/70 text-lg pt-5 lg:pt-0">
-              Build skills with our courses and mentor from world-class
-              companies.
+              {/* Build skills with our courses and mentor from world-class
+              companies. */}
+              Every project is a challenge we proudly embrace—driving us to deliver not only high-quality apps, software, and digital strategies, but also solutions that are scalable, innovative, and user-centered. With each collaboration, we aim to create measurable success, empowering businesses to grow, transform, and achieve sustainable impact in the digital era.
             </h3>
-            <div className="relative rounded-full pt-5 lg:pt-0">
+            {/* <div className="relative rounded-full pt-5 lg:pt-0">
               <input
                 type="Email address"
                 name="q"
@@ -38,7 +40,7 @@ const Hero = () => {
                   className="text-white text-4xl inline-block"
                 />
               </button>
-            </div>
+            </div> */}
             <div className="flex items-center justify-between pt-10 lg:pt-4">
               <div className="flex gap-2">
                 <Image
@@ -49,7 +51,7 @@ const Hero = () => {
                   className="smallImage"
                 />
                 <p className="text-sm sm:text-lg font-normal text-black">
-                  Flexible
+                  Innovation & Quality
                 </p>
               </div>
               <div className="flex gap-2">
@@ -61,7 +63,7 @@ const Hero = () => {
                   className="smallImage"
                 />
                 <p className="text-sm sm:text-lg font-normal text-black">
-                  Learning path
+                  Collaboration & Success
                 </p>
               </div>
               <div className="flex gap-2">
@@ -73,7 +75,7 @@ const Hero = () => {
                   className="smallImage"
                 />
                 <p className="text-sm sm:text-lg font-normal text-black">
-                  Community
+                  Growth & Impact
                 </p>
               </div>
             </div>

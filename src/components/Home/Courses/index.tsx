@@ -75,13 +75,13 @@ const Courses = () => {
       <div className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md px-4">
         <div className="sm:flex justify-between items-center mb-20">
           <h2 className="text-midnight_text text-4xl lg:text-5xl font-semibold mb-5 sm:mb-0">
-            Popular courses.
+            Our Projects.
           </h2>
           <Link
             href={"/"}
             className="text-primary text-lg font-medium hover:tracking-widest duration-500"
           >
-            Explore courses&nbsp;&gt;&nbsp;
+            Explore projects&nbsp;&gt;&nbsp;
           </Link>
         </div>
         <Slider {...settings}>
@@ -96,11 +96,11 @@ const Courses = () => {
                     height={262}
                     className="m-auto clipPath"
                   />
-                  <div className="absolute right-5 -bottom-2 bg-secondary rounded-full p-6">
+                  {/* <div className="absolute right-5 -bottom-2 bg-secondary rounded-full p-6">
                     <h3 className="text-white uppercase text-center text-sm font-medium">
                       best <br /> seller
                     </h3>
-                  </div>
+                  </div> */}
                 </div>
 
                 <div className="px-3 pt-6">
@@ -116,16 +116,17 @@ const Courses = () => {
                   <div className="flex justify-between items-center py-6 border-b">
                     <div className="flex items-center gap-4">
                       <h3 className="text-red-700 text-2xl font-medium">
-                        {items.rating}
+                        {/* {items.rating} */}
                       </h3>
                       <div className="flex">
-                        {renderStars(items.rating)} {/* Dynamic stars */}
+                        {/* {renderStars(items.rating)}  */}
+                        {/* Dynamic stars */}
                       </div>
                     </div>
-                    <h3 className="text-3xl font-medium">${items.price}</h3>
+                    {/* <h3 className="text-3xl font-medium">${items.price}</h3> */}
                   </div>
                   <div className="flex justify-between pt-6">
-                    <div className="flex gap-4">
+                    {/* <div className="flex gap-4">
                       <Icon
                         icon="solar:notebook-minimalistic-outline"
                         className="text-primary text-xl inline-block me-2"
@@ -133,15 +134,15 @@ const Courses = () => {
                       <h3 className="text-base font-medium text-black opacity-75">
                         {items.classes} classes
                       </h3>
-                    </div>
+                    </div> */}
                     <div className="flex gap-4">
-                      <Icon
+                      {/* <Icon
                         icon="solar:users-group-rounded-linear"
                         className="text-primary text-xl inline-block me-2"
                       />
                       <h3 className="text-base font-medium text-black opacity-75">
                         {items.students} students
-                      </h3>
+                      </h3> */}
                     </div>
                   </div>
                 </div>

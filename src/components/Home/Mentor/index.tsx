@@ -42,7 +42,7 @@ const Mentor = () => {
     <section className="bg-deepSlate" id="mentor">
       <div className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md px-4 relative">
         <h2 className="text-midnight_text text-5xl font-semibold">
-          Meet with our <br /> mentor.
+          Meet with our <br /> family.
         </h2>
 
         <Slider {...settings}>

@@ -77,32 +77,32 @@ const footer = () => {
                 icon="tabler:brand-google-maps"
                 className="text-primary text-3xl inline-block me-2"
               />
-              <h5 className="text-lg text-black/60">925 Filbert Street Pennsylvania 18072</h5>
+              <h5 className="text-lg text-black/60">Bandung, Indonesia</h5>
             </div>
             <div className="flex gap-2 mt-10">
               <Icon
                 icon="tabler:phone"
                 className="text-primary text-3xl inline-block me-2"
               />
-              <h5 className="text-lg text-black/60">+45 3411-4411</h5>
+              <h5 className="text-lg text-black/60">+62 8139 3139 307</h5>
             </div>
             <div className="flex gap-2 mt-10">
               <Icon
                 icon="tabler:folder"
                 className="text-primary text-3xl inline-block me-2"
               />
-              <h5 className="text-lg text-black/60">info@gmail.com</h5>
+              <h5 className="text-lg text-black/60">admin@caris.web.id</h5>
             </div>
           </div>
         </div>
 
         <div className='mt-10 lg:flex items-center justify-between'>
-          <h4 className='text-black/50 text-sm text-center lg:text-start font-normal'>@2025 Agency. All Rights Reserved by <Link href="https://getnextjstemplates.com/" target="_blank" className="hover:text-primary"> GetNextJsTemplates.com</Link></h4>
+          <h4 className='text-black/50 text-sm text-center lg:text-start font-normal'>@2021 Company. All Rights Reserved by <Link href="https://getnextjstemplates.com/" target="_blank" className="hover:text-primary"> Indo Caris Internaional</Link></h4>
           <div className="flex gap-5 mt-5 lg:mt-0 justify-center lg:justify-start">
             <Link href="/" className='text-black/50 text-sm font-normal hover:text-primary'>Privacy policy</Link>
             <Link href="/" className='text-black/50 text-sm font-normal hover:text-primary'>Terms & conditions</Link>
           </div>
-          <h4 className='text-black/50 text-sm text-center lg:text-start font-normal'>Distributed by <Link href="https://themewagon.com/" target="_blank" className="hover:text-primary"> ThemeWagon</Link></h4>
+          {/* <h4 className='text-black/50 text-sm text-center lg:text-start font-normal'>Distributed by <Link href="https://themewagon.com/" target="_blank" className="hover:text-primary"> ThemeWagon</Link></h4> */}
         </div>
       </div>
     </footer>
