@@ -16,6 +16,13 @@ const DetailTeam = () => {
       .replace(/[^a-z0-9]+/g, "-")
       .replace(/(^-|-$)+/g, "");
 
+  // fungsi untuk ubah slug kembali ke nama (untuk pencarian yang lebih fleksibel)
+  const unSlugify = (slug) =>
+    slug
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+
   useEffect(() => {
     const fetchEmployee = async () => {
       try {
@@ -25,8 +32,46 @@ const DetailTeam = () => {
         if (error) {
           throw error;
         } else {
-          // cari yang slug-nya cocok
-          const emp = data.find((e) => slugify(e.full_name) === slug);
+          // Cari employee dengan beberapa cara:
+          let emp = null;
+
+          // 1. Cari berdasarkan slug yang cocok persis
+          emp = data.find((e) => slugify(e.full_name) === slug);
+
+          // 2. Jika tidak ditemukan, cari berdasarkan nama yang di-unslugify
+          if (!emp) {
+            const searchName = unSlugify(slug);
+            emp = data.find(
+              (e) => e.full_name.toLowerCase() === searchName.toLowerCase()
+            );
+          }
+
+          // 3. Jika masih tidak ditemukan, cari dengan pencarian parsial
+          if (!emp) {
+            const searchTerms = slug.split("-");
+            emp = data.find((e) => {
+              const fullName = e.full_name.toLowerCase();
+              return searchTerms.every((term) =>
+                fullName.includes(term.toLowerCase())
+              );
+            });
+          }
+
+          // 4. Pencarian berdasarkan kata kunci dalam nama (lebih fleksibel)
+          if (!emp) {
+            const searchTerms = slug.split("-");
+            emp = data.find((e) => {
+              const nameWords = e.full_name.toLowerCase().split(" ");
+              return searchTerms.some((term) =>
+                nameWords.some(
+                  (word) =>
+                    word.startsWith(term.toLowerCase()) ||
+                    word.includes(term.toLowerCase())
+                )
+              );
+            });
+          }
+
           if (!emp) {
             setError("Employee not found");
           } else {
