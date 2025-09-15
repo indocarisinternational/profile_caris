@@ -590,8 +590,52 @@ const DetailTeam = () => {
               )}
             </div>
 
-            {/* Social Links */}
+            {/* Social Links Section */}
             <div className="mt-6 pb-16 lg:pb-0 w-4/5 lg:w-full mx-auto flex flex-wrap items-center justify-center lg:justify-start gap-4">
+              {employee.email_office && (
+                <a
+                  href={`mailto:${employee.email_office}`}
+                  className="group p-2 rounded-full hover:bg-blue-100 dark:hover:bg-gray-700 transition-all duration-300"
+                  title={`Email ${employee.full_name}`}
+                >
+                  <svg
+                    className="h-6 w-6 text-gray-500 group-hover:text-blue-600 transition-colors duration-300"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    />
+                  </svg>
+                </a>
+              )}
+
+              {employee.phone_number && (
+                <a
+                  href={`tel:${employee.phone_number}`}
+                  className="group p-2 rounded-full hover:bg-blue-100 dark:hover:bg-gray-700 transition-all duration-300"
+                  title={`Call ${employee.full_name}`}
+                >
+                  <svg
+                    className="h-6 w-6 text-gray-500 group-hover:text-blue-600 transition-colors duration-300"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                    />
+                  </svg>
+                </a>
+              )}
+
               {employee.linkedin_url && (
                 <a
                   href={employee.linkedin_url}
@@ -605,6 +649,7 @@ const DetailTeam = () => {
                   </div>
                 </a>
               )}
+
               {employee.instagram_url && (
                 <a
                   href={`https://www.instagram.com/${employee.instagram_url}`}
@@ -618,6 +663,7 @@ const DetailTeam = () => {
                   </div>
                 </a>
               )}
+
               {employee.portfolio_url && (
                 <a
                   href={employee.portfolio_url}
