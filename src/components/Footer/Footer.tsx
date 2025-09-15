@@ -92,8 +92,8 @@ const Footer: React.FC = () => {
           <h4 className="text-black/50 text-sm text-center lg:text-start font-normal">
             @2021 Company. All Rights Reserved by{" "}
             <a
-              href="https://getnextjstemplates.com/"
-              target="_blank"
+              href="#"
+              // target="_blank"
               rel="noreferrer"
               className="hover:text-primary"
             >
