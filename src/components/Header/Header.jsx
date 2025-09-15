@@ -8,23 +8,38 @@ import { Icon } from "@iconify/react";
 const Header = () => {
   const [sticky, setSticky] = useState(false);
   const [navbarOpen, setNavbarOpen] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   const mobileMenuRef = useRef(null);
 
   // Handle sticky navbar saat scroll
   useEffect(() => {
     const handleScroll = () => {
-      setSticky(window.scrollY > 20);
+      const currentScrollY = window.scrollY;
+
+      // sticky effect
+      setSticky(currentScrollY > 20);
+
+      // auto hide
+      if (currentScrollY > lastScrollY && currentScrollY > 50) {
+        setVisible(false); // scroll down → hide
+      } else {
+        setVisible(true); // scroll up → show
+      }
+
+      setLastScrollY(currentScrollY);
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
   return (
     <header
       className={`fixed top-0 z-40 w-full transition-all duration-300 bg-white ${
         sticky ? "shadow-lg py-4" : "shadow-none py-6"
-      }`}
+      } ${visible ? "translate-y-0" : "-translate-y-full"}`}
     >
       <div className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md grid grid-cols-3 items-center px-4">
         {/* Kiri: Logo */}

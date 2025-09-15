@@ -349,20 +349,21 @@ const DetailTeam = () => {
     );
   }
 
-  const backgroundImage =
-    "https://source.unsplash.com/1920x1080/?office,business,professional";
+  const backgroundImage = "/bg_p.jpg";
 
   return (
     <div
-      className={`font-sans antialiased leading-normal tracking-wider bg-cover min-h-screen transition-all duration-300 ${
+      className={`relative font-sans antialiased mt-17 leading-normal tracking-wider min-h-screen bg-cover bg-center transition-all duration-300 ${
         darkMode ? "text-gray-100" : "text-gray-900"
       }`}
       style={{ backgroundImage: `url('${backgroundImage}')` }}
     >
-      {/* Back Button */}
-      <div className="absolute top-4 left-4 z-10">
+      {/* Back Button & Dark Mode Toggle */}
+      {/* Controls (Back + DarkMode) */}
+      <div className="absolute top-6 left-0 w-full flex items-center justify-between px-6 z-10">
+        {/* Back Button */}
         <Link
-          to="/team"
+          to="/"
           className={`inline-flex items-center px-4 py-2 rounded-full font-medium transition-all duration-300 ${
             darkMode
               ? "bg-gray-800 bg-opacity-80 text-white hover:bg-opacity-100"
@@ -372,8 +373,22 @@ const DetailTeam = () => {
           <ArrowLeftIcon />
           Back to Team
         </Link>
+
+        {/* Dark Mode Toggle */}
+        <button
+          onClick={toggleDarkMode}
+          className={`focus:outline-none text-2xl hover:scale-110 transition-transform duration-300 p-3 rounded-full ${
+            darkMode
+              ? "bg-gray-800 bg-opacity-80 text-white hover:bg-opacity-100"
+              : "bg-white bg-opacity-80 text-gray-700 hover:bg-opacity-100"
+          } backdrop-blur-sm shadow-lg`}
+          title="Toggle dark mode"
+        >
+          {darkMode ? "☀️" : "🌙"}
+        </button>
       </div>
 
+      {/* Main Content */}
       <div className="max-w-6xl flex items-center min-h-screen flex-wrap mx-auto py-16 px-4">
         {/* Main Profile Card */}
         <div
@@ -398,7 +413,7 @@ const DetailTeam = () => {
               }}
             ></div>
 
-            {/* Employee Code Badge */}
+            {/* Employee Code */}
             {employee.employee_code && (
               <div className="flex justify-center lg:justify-start mb-4">
                 <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full">
@@ -466,7 +481,7 @@ const DetailTeam = () => {
               </div>
             )}
 
-            {/* Contact Information */}
+            {/* Contact Info */}
             <div className="pt-6 space-y-3">
               {employee.email_office && (
                 <div className="flex items-center justify-center lg:justify-start text-sm">
@@ -479,7 +494,6 @@ const DetailTeam = () => {
                   </a>
                 </div>
               )}
-
               {employee.phone_number && (
                 <div className="flex items-center justify-center lg:justify-start text-sm">
                   <PhoneIcon />
@@ -506,7 +520,7 @@ const DetailTeam = () => {
               </div>
             )}
 
-            {/* Badges */}
+            {/* Achievements */}
             {employee.badges && employee.badges.length > 0 && (
               <div className="pt-6">
                 <h4 className="font-semibold mb-3 flex items-center justify-center lg:justify-start">
@@ -549,7 +563,6 @@ const DetailTeam = () => {
                   Get In Touch
                 </a>
               )}
-
               {employee.cv_url && (
                 <a
                   href={`${
@@ -577,52 +590,8 @@ const DetailTeam = () => {
               )}
             </div>
 
-            {/* Social Links Section */}
+            {/* Social Links */}
             <div className="mt-6 pb-16 lg:pb-0 w-4/5 lg:w-full mx-auto flex flex-wrap items-center justify-center lg:justify-start gap-4">
-              {employee.email_office && (
-                <a
-                  href={`mailto:${employee.email_office}`}
-                  className="group p-2 rounded-full hover:bg-blue-100 dark:hover:bg-gray-700 transition-all duration-300"
-                  title={`Email ${employee.full_name}`}
-                >
-                  <svg
-                    className="h-6 w-6 text-gray-500 group-hover:text-blue-600 transition-colors duration-300"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
-                </a>
-              )}
-
-              {employee.phone_number && (
-                <a
-                  href={`tel:${employee.phone_number}`}
-                  className="group p-2 rounded-full hover:bg-blue-100 dark:hover:bg-gray-700 transition-all duration-300"
-                  title={`Call ${employee.full_name}`}
-                >
-                  <svg
-                    className="h-6 w-6 text-gray-500 group-hover:text-blue-600 transition-colors duration-300"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                    />
-                  </svg>
-                </a>
-              )}
-
               {employee.linkedin_url && (
                 <a
                   href={employee.linkedin_url}
@@ -636,7 +605,6 @@ const DetailTeam = () => {
                   </div>
                 </a>
               )}
-
               {employee.instagram_url && (
                 <a
                   href={`https://www.instagram.com/${employee.instagram_url}`}
@@ -650,7 +618,6 @@ const DetailTeam = () => {
                   </div>
                 </a>
               )}
-
               {employee.portfolio_url && (
                 <a
                   href={employee.portfolio_url}
@@ -685,21 +652,6 @@ const DetailTeam = () => {
               e.target.src = "/images/default-avatar.png";
             }}
           />
-        </div>
-
-        {/* Dark Mode Toggle */}
-        <div className="absolute top-4 right-4 z-10">
-          <button
-            onClick={toggleDarkMode}
-            className={`focus:outline-none text-2xl hover:scale-110 transition-transform duration-300 p-3 rounded-full ${
-              darkMode
-                ? "bg-gray-800 bg-opacity-80 hover:bg-opacity-100"
-                : "bg-white bg-opacity-80 hover:bg-opacity-100"
-            } backdrop-blur-sm shadow-lg`}
-            title="Toggle dark mode"
-          >
-            {darkMode ? "☀️" : "🌙"}
-          </button>
         </div>
       </div>
     </div>
