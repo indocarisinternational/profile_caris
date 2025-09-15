@@ -13,7 +13,7 @@ const Hero = () => {
                 className="text-success text-xl inline-block me-2"
               />
               <p className="text-success text-sm font-semibold text-center lg:text-start">
-                Get 30% off on first enroll
+                Indo Caris International
               </p>
             </div>
 
@@ -72,14 +72,24 @@ const Hero = () => {
           </div>
 
           {/* Kanan */}
-          <div className="col-span-6 flex justify-center">
+          {/* <div className="col-span-6 flex justify-center">
             <img
-              src="/banner/mahila.png"
+              src="/banner/caris.png"
               alt="nothing"
               width={1000}
               height={805}
             />
+          </div> */}
+          <div className="col-span-6 flex justify-center">
+            <img
+              src="/banner/caris.png"
+              alt="nothing"
+              width={805}
+              height={805}
+              className="rounded-[48px] border border-black"
+            />
           </div>
+
         </div>
       </div>
     </section>
