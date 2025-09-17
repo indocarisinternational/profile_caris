@@ -23,7 +23,7 @@ const Companies = () => {
 
         return {
           ...client,
-          logo_url: urlData.publicUrl, // ganti dengan public URL
+          logo_url: urlData.publicUrl,
         };
       });
 
@@ -36,7 +36,7 @@ const Companies = () => {
   const settings = {
     dots: false,
     infinite: true,
-    slidesToShow: 4,
+    slidesToShow: 5,
     slidesToScroll: 1,
     arrows: false,
     autoplay: true,
@@ -45,15 +45,19 @@ const Companies = () => {
     cssEase: "linear",
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1280, // laptop
         settings: { slidesToShow: 4, slidesToScroll: 1 },
       },
       {
-        breakpoint: 700,
+        breakpoint: 1024, // tablet landscape
+        settings: { slidesToShow: 3, slidesToScroll: 1 },
+      },
+      {
+        breakpoint: 768, // tablet portrait
         settings: { slidesToShow: 2, slidesToScroll: 1 },
       },
       {
-        breakpoint: 500,
+        breakpoint: 480, // smartphone
         settings: { slidesToShow: 1, slidesToScroll: 1 },
       },
     ],
@@ -61,20 +65,21 @@ const Companies = () => {
 
   return (
     <section className="text-center">
-      <div className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md px-4 mt-40">
-        <h2 className="text-gray-800 text-2xl font-semibold">
+      <div className="container mx-auto max-w-screen-xl px-4 mt-20 sm:mt-32 lg:mt-40">
+        <h2 className="text-gray-800 text-xl sm:text-2xl font-semibold">
           Trusted by Innovators Everywhere
         </h2>
-        <div className="py-14 border-b border-gray-300">
+        <div className="py-10 sm:py-14 border-b border-gray-300">
           <Slider {...settings}>
             {clients.map((client) => (
-              <div key={client.id} className="flex justify-center">
+              <div
+                key={client.id}
+                className="flex justify-center items-center px-2"
+              >
                 <img
                   src={client.logo_url}
                   alt={client.nama_client}
-                  width={116}
-                  height={36}
-                  className="object-contain"
+                  className="object-contain max-h-14 sm:max-h-16 md:max-h-20 lg:max-h-24 w-auto"
                 />
               </div>
             ))}

@@ -13,19 +13,25 @@ const Header = () => {
 
   const mobileMenuRef = useRef(null);
 
+  // // Debug: log headerData
+  // console.log("Header Data:", headerData);
+  // console.log("Navbar Open:", navbarOpen);
+
   // Handle sticky navbar saat scroll
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      // sticky effect
       setSticky(currentScrollY > 20);
 
-      // auto hide
-      if (currentScrollY > lastScrollY && currentScrollY > 50) {
-        setVisible(false); // scroll down → hide
+      if (window.innerWidth >= 1024) {
+        if (currentScrollY > lastScrollY && currentScrollY > 50) {
+          setVisible(false);
+        } else {
+          setVisible(true);
+        }
       } else {
-        setVisible(true); // scroll up → show
+        setVisible(true);
       }
 
       setLastScrollY(currentScrollY);
@@ -35,81 +41,154 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        mobileMenuRef.current &&
+        !mobileMenuRef.current.contains(event.target) &&
+        navbarOpen
+      ) {
+        setNavbarOpen(false);
+      }
+    };
+
+    if (navbarOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.body.style.overflow = "unset";
+    };
+  }, [navbarOpen]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024 && navbarOpen) {
+        setNavbarOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [navbarOpen]);
+
   return (
-    <header
-      className={`fixed top-0 z-40 w-full transition-all duration-300 bg-white ${
-        sticky ? "shadow-lg py-4" : "shadow-none py-6"
-      } ${visible ? "translate-y-0" : "-translate-y-full"}`}
-    >
-      <div className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md grid grid-cols-3 items-center px-4">
-        {/* Kiri: Logo */}
-        <div className="flex items-center">
-          <Logo />
+    <>
+      <header
+        className={`fixed top-0 z-40 w-full transition-all duration-300 bg-white border-b ${
+          sticky
+            ? "shadow-lg py-2 sm:py-3 lg:py-4"
+            : "shadow-none py-3 sm:py-4 lg:py-6"
+        } ${visible ? "translate-y-0" : "-translate-y-full"}`}
+      >
+        <div className="container mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between">
+            <div className="flex-shrink-0 z-50">
+              <Logo />
+            </div>
+
+            <nav className="hidden lg:flex items-center gap-6 xl:gap-8 justify-center flex-1">
+              {headerData.map((item, index) => (
+                <HeaderLink key={index} item={item} />
+              ))}
+            </nav>
+
+            <div className="hidden lg:flex justify-end flex-shrink-0">
+              <span className="text-sm xl:text-lg font-semibold text-gray-800 whitespace-nowrap">
+                Indo Caris International
+              </span>
+            </div>
+
+            <button
+              onClick={() => {
+                console.log("Mobile menu button clicked!");
+                setNavbarOpen(!navbarOpen);
+              }}
+              className="lg:hidden p-2 rounded-lg z-50 relative bg-gray-100"
+              aria-label="Toggle mobile menu"
+            >
+              <div className="w-6 h-6 flex flex-col justify-center items-center">
+                <span
+                  className={`block w-6 h-0.5 bg-black transition-all duration-300 ${
+                    navbarOpen ? "rotate-45 translate-y-0.5" : ""
+                  }`}
+                ></span>
+                <span
+                  className={`block w-6 h-0.5 bg-black mt-1.5 transition-all duration-300 ${
+                    navbarOpen ? "opacity-0" : ""
+                  }`}
+                ></span>
+                <span
+                  className={`block w-6 h-0.5 bg-black mt-1.5 transition-all duration-300 ${
+                    navbarOpen ? "-rotate-45 -translate-y-2" : ""
+                  }`}
+                ></span>
+              </div>
+            </button>
+          </div>
         </div>
+      </header>
 
-        {/* Tengah: Navigation Desktop */}
-        <nav className="hidden lg:flex items-center gap-8 justify-center">
-          {headerData.map((item, index) => (
-            <HeaderLink key={index} item={item} />
-          ))}
-        </nav>
-
-        {/* Kanan: Tulisan Indo Caris International */}
-        <div className="hidden lg:flex justify-end">
-          <span className="text-lg font-semibold text-gray-800 whitespace-nowrap">
-            Indo Caris International
-          </span>
-        </div>
-
-        {/* Tombol Mobile Menu */}
-        <div className="flex justify-end lg:hidden">
-          <button
-            onClick={() => setNavbarOpen(!navbarOpen)}
-            className="p-2 rounded-lg"
-            aria-label="Toggle mobile menu"
-          >
-            <span className="block w-6 h-0.5 bg-black"></span>
-            <span className="block w-6 h-0.5 bg-black mt-1.5"></span>
-            <span className="block w-6 h-0.5 bg-black mt-1.5"></span>
-          </button>
-        </div>
-      </div>
-
-      {/* Overlay Mobile Menu */}
-      {navbarOpen && (
-        <div
-          className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-40"
-          onClick={() => setNavbarOpen(false)}
-        />
-      )}
+      {/* Mobile Menu Overlay */}
+      <div
+        className={`lg:hidden fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 ${
+          navbarOpen ? "opacity-100 visible" : "opacity-0 invisible"
+        }`}
+        onClick={() => setNavbarOpen(false)}
+      />
 
       {/* Mobile Menu */}
       <div
         ref={mobileMenuRef}
-        className={`lg:hidden fixed top-0 right-0 h-full w-full bg-white shadow-lg transform transition-transform duration-300 max-w-xs ${
+        className={`lg:hidden fixed top-0 right-0 h-screen w-full max-w-sm bg-white shadow-2xl transform transition-transform duration-300 ease-in-out z-50 ${
           navbarOpen ? "translate-x-0" : "translate-x-full"
-        } z-50`}
+        }`}
       >
-        <div className="flex items-center justify-between p-4">
-          <Logo />
-          <button
-            onClick={() => setNavbarOpen(false)}
-            className="w-5 h-5 absolute top-0 right-0 mr-8 mt-8"
-            aria-label="Close menu Modal"
-          >
-            <Icon icon="tabler:x" className="text-black text-2xl" />
-          </button>
-        </div>
-        <nav className="flex flex-col items-center p-4">
-          {headerData.map((item, index) => (
-            <MobileHeaderLink key={index} item={item} />
-          ))}
-          <div className="mt-4 w-full text-center font-semibold text-gray-800">
-            Indo Caris International
+        <div className="h-full flex flex-col">
+          {/* Header */}
+          <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-gray-50">
+            <Logo />
+            <button
+              onClick={() => setNavbarOpen(false)}
+              className="p-2 rounded-lg hover:bg-gray-200 transition-colors"
+              aria-label="Close menu"
+            >
+              <Icon icon="tabler:x" className="text-black text-2xl" />
+            </button>
           </div>
-        </nav>
+
+          {/* Navigation */}
+          <div className="flex-1 p-4 bg-white overflow-y-auto">
+            <div className="space-y-2">
+              {headerData?.length > 0 ? (
+                headerData.map((item, index) => (
+                  <MobileHeaderLink
+                    key={index}
+                    item={item}
+                    onNavigate={() => setNavbarOpen(false)}
+                  />
+                ))
+              ) : (
+                <div className="text-red-500 p-4 bg-red-100 rounded">
+                  No menu items found! Check your headerData.
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Footer */}
+          <div className="p-4 border-t border-gray-200 bg-gray-50">
+            <div className="text-center font-semibold text-gray-800">
+              Indo Caris International
+            </div>
+          </div>
+        </div>
       </div>
-    </header>
+    </>
   );
 };
 
