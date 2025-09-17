@@ -8,49 +8,49 @@ import { Icon } from "@iconify/react";
 export const TestimonialData = [
   {
     name: "Robert Fox",
-    profession: "CEO, Parkview Int.Ltd",
+    profession: "CEO, Parkview Int. Ltd",
     comment:
-      "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour",
+      "Indo Caris International helped streamline our digital infrastructure. Their innovative solutions saved us both time and resources.",
     imgSrc: "/testimonial/user.svg",
     rating: 5,
   },
   {
     name: "Leslie Alexander",
-    profession: "CEO, Parkview Int.Ltd",
+    profession: "Head of Marketing, BrightWave Media",
     comment:
-      "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour",
+      "The professionalism and attention to detail were outstanding. They understood our needs and delivered beyond expectations.",
     imgSrc: "/testimonial/user.svg",
     rating: 5,
   },
   {
     name: "Cody Fisher",
-    profession: "CEO, Parkview Int.Ltd",
+    profession: "Founder, NovaTech Solutions",
     comment:
-      "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour",
+      "Working with Indo Caris International has been a game-changer. Their scalable systems allowed us to expand rapidly without issues.",
     imgSrc: "/testimonial/user.svg",
     rating: 5,
   },
   {
-    name: "Robert Fox",
-    profession: "CEO, Parkview Int.Ltd",
+    name: "Esther Howard",
+    profession: "Operations Manager, GreenLeaf Co.",
     comment:
-      "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour",
+      "They delivered the project ahead of schedule with impeccable quality. Truly a partner we can rely on for the long term.",
     imgSrc: "/testimonial/user.svg",
     rating: 5,
   },
   {
-    name: "Leslie Alexander",
-    profession: "CEO, Parkview Int.Ltd",
+    name: "Courtney Henry",
+    profession: "Product Manager, Visionary Apps",
     comment:
-      "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour",
+      "From start to finish, the team was responsive and insightful. Their innovative ideas made our platform far more engaging.",
     imgSrc: "/testimonial/user.svg",
     rating: 5,
   },
   {
-    name: "Cody Fisher",
-    profession: "CEO, Parkview Int.Ltd",
+    name: "Darlene Robertson",
+    profession: "CTO, Silverline Global",
     comment:
-      "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour",
+      "Their technical expertise and dedication are unmatched. Every challenge was met with a smart, future-proof solution.",
     imgSrc: "/testimonial/user.svg",
     rating: 5,
   },
