@@ -19,7 +19,7 @@ export const TestimonialData = [
     profession: "Head of Marketing, BrightWave Media",
     comment:
       "The professionalism and attention to detail were outstanding. They understood our needs and delivered beyond expectations.",
-    imgSrc: "/testimonial/user.svg",
+    imgSrc: "/testimonial/userone.png",
     rating: 5,
   },
   {
@@ -27,7 +27,7 @@ export const TestimonialData = [
     profession: "Founder, NovaTech Solutions",
     comment:
       "Working with Indo Caris International has been a game-changer. Their scalable systems allowed us to expand rapidly without issues.",
-    imgSrc: "/testimonial/user.svg",
+    imgSrc: "/testimonial/usertwo.png",
     rating: 5,
   },
   {
@@ -35,7 +35,7 @@ export const TestimonialData = [
     profession: "Operations Manager, GreenLeaf Co.",
     comment:
       "They delivered the project ahead of schedule with impeccable quality. Truly a partner we can rely on for the long term.",
-    imgSrc: "/testimonial/user.svg",
+    imgSrc: "/testimonial/userthree.png",
     rating: 5,
   },
   {
@@ -51,7 +51,7 @@ export const TestimonialData = [
     profession: "CTO, Silverline Global",
     comment:
       "Their technical expertise and dedication are unmatched. Every challenge was met with a smart, future-proof solution.",
-    imgSrc: "/testimonial/user.svg",
+    imgSrc: "/testimonial/userone.png",
     rating: 5,
   },
 ];
