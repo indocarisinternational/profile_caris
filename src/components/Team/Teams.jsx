@@ -78,11 +78,12 @@ const Teams = () => {
                 <div className="relative">
                   <img
                     src={getImageUrl(emp.profile_photo_url)}
-                    alt={emp.full_name}
+                    alt={`${emp.full_name} - ${emp.position} at Indo Caris International IT Consultant Jakarta`}
                     width={280}
                     height={280}
                     className="inline-block m-auto w-[220px] h-[220px] sm:w-[260px] sm:h-[260px] md:w-[280px] md:h-[280px] object-cover rounded-full cursor-pointer shadow-md hover:scale-105 transition-transform"
                     onClick={() => navigate(`/${slugify(emp.full_name)}`)}
+                    loading="lazy"
                   />
                   {emp.linkedin_url && (
                     <a

@@ -21,16 +21,14 @@ const Hero = () => {
             {/* Main Heading */}
             <div className="space-y-4 sm:space-y-6">
               <h1 className="text-midnight_text text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
-                We Create <span className="text-primary">Scalable</span> and{" "}
-                <span className="text-primary">Innovative</span> Digital
-                Solutions
+                Leading <span className="text-primary">IT Consultant Jakarta</span> - Creating{" "}
+                <span className="text-primary">Scalable</span> Digital Solutions
               </h1>
 
               <p className="text-black/70 text-base sm:text-lg lg:text-xl leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                Every project is a challenge we proudly embrace—driving us to
-                deliver not only high-quality apps, software, and digital
-                strategies, but also solutions that are scalable, innovative,
-                and user-centered.
+                Transform your business with Indo Caris International's expert IT consulting services. 
+                We deliver innovative software development, digital transformation strategies, and 
+                comprehensive technology solutions for companies across Jakarta and Indonesia.
               </p>
             </div>
 
@@ -46,7 +44,7 @@ const Hero = () => {
                     />
                   </div>
                   <p className="text-base font-medium text-black">
-                    Innovation & Quality
+                    Software Development & Innovation
                   </p>
                 </div>
                 <div className="flex items-center gap-3 justify-center lg:justify-start">
@@ -57,7 +55,7 @@ const Hero = () => {
                     />
                   </div>
                   <p className="text-base font-medium text-black">
-                    Collaboration & Success
+                    Digital Transformation Consulting
                   </p>
                 </div>
                 <div className="flex items-center gap-3 justify-center lg:justify-start">
@@ -68,7 +66,7 @@ const Hero = () => {
                     />
                   </div>
                   <p className="text-base font-medium text-black">
-                    Growth & Impact
+                    IT Support & Technology Solutions
                   </p>
                 </div>
               </div>
@@ -83,7 +81,7 @@ const Hero = () => {
                     />
                   </div>
                   <p className="text-sm lg:text-base xl:text-lg font-medium text-black">
-                    Innovation & Quality
+                    Software Development & Innovation
                   </p>
                 </div>
                 <div className="flex items-center gap-3 justify-center lg:justify-start">
@@ -94,7 +92,7 @@ const Hero = () => {
                     />
                   </div>
                   <p className="text-sm lg:text-base xl:text-lg font-medium text-black">
-                    Collaboration & Success
+                    Digital Transformation Consulting
                   </p>
                 </div>
                 <div className="flex items-center gap-3 justify-center lg:justify-start">
@@ -105,7 +103,7 @@ const Hero = () => {
                     />
                   </div>
                   <p className="text-sm lg:text-base xl:text-lg font-medium text-black">
-                    Growth & Impact
+                    IT Support & Technology Solutions
                   </p>
                 </div>
               </div>
@@ -127,7 +125,7 @@ const Hero = () => {
             <div className="relative w-full max-w-lg lg:max-w-none">
               <img
                 src="/banner.png"
-                alt="Indo Caris International - Digital Solutions"
+                alt="Indo Caris International IT Consultant Jakarta - Professional team providing digital solutions and software development services"
                 className="w-full h-auto rounded-2xl sm:rounded-3xl lg:rounded-[48px] border border-gray-200 shadow-2xl transform hover:scale-105 transition-transform duration-300"
                 style={{
                   aspectRatio: "1/1",

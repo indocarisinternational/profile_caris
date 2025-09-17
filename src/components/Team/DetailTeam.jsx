@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { supabase } from "../../supabaseClient";
+import SEO from "../SEO/SEO";
+import Schema from "../SEO/Schema";
 
 const DetailTeam = () => {
   const { slug } = useParams();
@@ -352,12 +354,35 @@ const DetailTeam = () => {
   const backgroundImage = "/bg_p.jpg";
 
   return (
-    <div
-      className={`relative font-sans antialiased mt-17 leading-normal tracking-wider min-h-screen bg-cover bg-center transition-all duration-300 ${
-        darkMode ? "text-gray-100" : "text-gray-900"
-      }`}
-      style={{ backgroundImage: `url('${backgroundImage}')` }}
-    >
+    <>
+      <SEO 
+        title={`${employee.full_name} - ${employee.position} | Indo Caris International`}
+        description={`Meet ${employee.full_name}, ${employee.position} at Indo Caris International. ${employee.specialization ? employee.specialization : `Expert in ${employee.department} with extensive experience in digital solutions and technology consulting.`}`}
+        keywords={`${employee.full_name}, ${employee.position}, ${employee.department}, Indo Caris International, IT Consultant Jakarta, Team Member`}
+        url={`/${slug}`}
+        type="profile"
+      />
+      <Schema 
+        type="person" 
+        data={{
+          name: employee.full_name,
+          jobTitle: employee.position,
+          slug: slug,
+          description: employee.specialization || `${employee.position} at Indo Caris International with expertise in ${employee.department}`,
+          image: employee.profile_photo_url ? `${import.meta.env.VITE_SUPABASE_URL}/storage/v1/object/public/employees/${employee.profile_photo_url}` : "/images/default-avatar.png",
+          socialLinks: [
+            employee.linkedin_url,
+            employee.instagram_url && `https://www.instagram.com/${employee.instagram_url}`,
+            employee.portfolio_url
+          ].filter(Boolean)
+        }}
+      />
+      <div
+        className={`relative font-sans antialiased mt-17 leading-normal tracking-wider min-h-screen bg-cover bg-center transition-all duration-300 ${
+          darkMode ? "text-gray-100" : "text-gray-900"
+        }`}
+        style={{ backgroundImage: `url('${backgroundImage}')` }}
+      >
       {/* Back Button & Dark Mode Toggle */}
       {/* Controls (Back + DarkMode) */}
       <div className="absolute top-6 left-0 w-full flex items-center justify-between px-6 z-10">
@@ -701,6 +726,7 @@ const DetailTeam = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

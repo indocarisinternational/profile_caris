@@ -91,7 +91,11 @@ const Header = () => {
               <Logo />
             </div>
 
-            <nav className="hidden lg:flex items-center gap-6 xl:gap-8 justify-center flex-1">
+            <nav 
+              id="navigation" 
+              className="hidden lg:flex items-center gap-6 xl:gap-8 justify-center flex-1"
+              aria-label="Main navigation"
+            >
               {headerData.map((item, index) => (
                 <HeaderLink key={index} item={item} />
               ))}
