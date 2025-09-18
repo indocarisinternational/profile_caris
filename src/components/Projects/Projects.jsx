@@ -63,8 +63,9 @@ const Projects = () => {
       <div className="w-full h-44 sm:h-52 overflow-hidden">
         <img
           src={getImageUrl(proj.image_url)}
-          alt={proj.project_name}
+          alt={`${proj.project_name} - ${proj.jenis_project} project by Indo Caris International IT Consultant Jakarta`}
           className="w-full h-full object-cover"
+          loading="lazy"
         />
       </div>
       <div className="p-4 flex flex-col flex-1">

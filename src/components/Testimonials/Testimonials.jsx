@@ -11,24 +11,37 @@ import {
 export const TestimonialData = [
   {
     name: "Robert Fox",
-    profession: "CEO, Parkview Int.Ltd",
+    profession: "CEO, Parkview Int. Ltd",
     comment:
+<<<<<<< HEAD
       "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour",
     imgSrc:
       "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
+=======
+      "Indo Caris International helped streamline our digital infrastructure. Their innovative solutions saved us both time and resources.",
+    imgSrc: "/testimonial/user.svg",
+>>>>>>> 71f9d06ac211a28fc0a967233087954d49fcf907
     rating: 5,
   },
   {
     name: "Leslie Alexander",
+<<<<<<< HEAD
     profession: "Marketing Director, TechCorp",
     comment:
       "Working with this team has been an absolute game-changer for our business. Their attention to detail and innovative solutions exceeded our expectations",
     imgSrc:
       "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face",
+=======
+    profession: "Head of Marketing, BrightWave Media",
+    comment:
+      "The professionalism and attention to detail were outstanding. They understood our needs and delivered beyond expectations.",
+    imgSrc: "/testimonial/userone.png",
+>>>>>>> 71f9d06ac211a28fc0a967233087954d49fcf907
     rating: 5,
   },
   {
     name: "Cody Fisher",
+<<<<<<< HEAD
     profession: "Founder, StartupXYZ",
     comment:
       "The professionalism and quality of work delivered by this team is outstanding. They truly understand what it takes to deliver exceptional results",
@@ -62,6 +75,37 @@ export const TestimonialData = [
     imgSrc:
       "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=100&h=100&fit=crop&crop=face",
     rating: 4,
+=======
+    profession: "Founder, NovaTech Solutions",
+    comment:
+      "Working with Indo Caris International has been a game-changer. Their scalable systems allowed us to expand rapidly without issues.",
+    imgSrc: "/testimonial/usertwo.png",
+    rating: 5,
+  },
+  {
+    name: "Esther Howard",
+    profession: "Operations Manager, GreenLeaf Co.",
+    comment:
+      "They delivered the project ahead of schedule with impeccable quality. Truly a partner we can rely on for the long term.",
+    imgSrc: "/testimonial/userthree.png",
+    rating: 5,
+  },
+  {
+    name: "Courtney Henry",
+    profession: "Product Manager, Visionary Apps",
+    comment:
+      "From start to finish, the team was responsive and insightful. Their innovative ideas made our platform far more engaging.",
+    imgSrc: "/testimonial/user.svg",
+    rating: 5,
+  },
+  {
+    name: "Darlene Robertson",
+    profession: "CTO, Silverline Global",
+    comment:
+      "Their technical expertise and dedication are unmatched. Every challenge was met with a smart, future-proof solution.",
+    imgSrc: "/testimonial/userone.png",
+    rating: 5,
+>>>>>>> 71f9d06ac211a28fc0a967233087954d49fcf907
   },
 ];
 

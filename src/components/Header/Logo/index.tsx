@@ -5,7 +5,7 @@ const Logo: React.FC = () => {
     <Link to="/" className="flex items-center gap-2">
       <img
         src="/logo.png"
-        alt="logo"
+        alt="Indo Caris International - IT Consultant Jakarta Logo"
         width={100}
         height={130}
         className="w-10 h-auto"
