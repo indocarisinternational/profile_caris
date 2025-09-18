@@ -1,128 +1,119 @@
-import { useState } from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { Icon } from "@iconify/react";
+import { useState, useEffect } from "react";
+import {
+  Star,
+  MessageSquare,
+  Quote,
+  Check,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 
-// Data dummy (bisa diganti dari Supabase/API)
 export const TestimonialData = [
   {
     name: "Robert Fox",
     profession: "CEO, Parkview Int.Ltd",
     comment:
       "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour",
-    imgSrc: "/testimonial/user.svg",
+    imgSrc:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
     rating: 5,
   },
   {
     name: "Leslie Alexander",
-    profession: "CEO, Parkview Int.Ltd",
+    profession: "Marketing Director, TechCorp",
     comment:
-      "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour",
-    imgSrc: "/testimonial/user.svg",
+      "Working with this team has been an absolute game-changer for our business. Their attention to detail and innovative solutions exceeded our expectations",
+    imgSrc:
+      "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face",
     rating: 5,
   },
   {
     name: "Cody Fisher",
-    profession: "CEO, Parkview Int.Ltd",
+    profession: "Founder, StartupXYZ",
     comment:
-      "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour",
-    imgSrc: "/testimonial/user.svg",
+      "The professionalism and quality of work delivered by this team is outstanding. They truly understand what it takes to deliver exceptional results",
+    imgSrc:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
+    rating: 4,
+  },
+  {
+    name: "Jenny Wilson",
+    profession: "Product Manager, InnovateCo",
+    comment:
+      "From concept to execution, every step was handled with care and expertise. The final product exceeded our wildest expectations",
+    imgSrc:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
     rating: 5,
   },
   {
-    name: "Robert Fox",
-    profession: "CEO, Parkview Int.Ltd",
+    name: "Wade Warren",
+    profession: "CTO, FutureTech",
     comment:
-      "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour",
-    imgSrc: "/testimonial/user.svg",
+      "Incredible attention to detail and seamless communication throughout the project. The team's technical expertise is truly impressive",
+    imgSrc:
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face",
     rating: 5,
   },
   {
-    name: "Leslie Alexander",
-    profession: "CEO, Parkview Int.Ltd",
+    name: "Kristin Watson",
+    profession: "Operations Manager, GrowthCorp",
     comment:
-      "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour",
-    imgSrc: "/testimonial/user.svg",
-    rating: 5,
-  },
-  {
-    name: "Cody Fisher",
-    profession: "CEO, Parkview Int.Ltd",
-    comment:
-      "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour",
-    imgSrc: "/testimonial/user.svg",
-    rating: 5,
+      "The collaborative approach and innovative solutions provided have significantly improved our operational efficiency. Highly recommended!",
+    imgSrc:
+      "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=100&h=100&fit=crop&crop=face",
+    rating: 4,
   },
 ];
 
 const Testimonial = () => {
-  const settings = {
-    dots: true,
-    dotsClass: "slick-dots custom-dots",
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    arrows: true,
-    autoplay: true,
-    autoplaySpeed: 4000,
-    pauseOnHover: true,
-    cssEase: "ease-in-out",
-    prevArrow: <CustomPrevArrow />,
-    nextArrow: <CustomNextArrow />,
-    responsive: [
-      {
-        breakpoint: 1280, // xl
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          dots: true,
-          arrows: true,
-        },
-      },
-      {
-        breakpoint: 1024, // lg
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          dots: true,
-          arrows: true,
-        },
-      },
-      {
-        breakpoint: 768, // md
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          dots: true,
-          arrows: false,
-        },
-      },
-      {
-        breakpoint: 640, // sm
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          dots: true,
-          arrows: false,
-          centerMode: true,
-          centerPadding: "20px",
-        },
-      },
-      {
-        breakpoint: 480, // xs
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          dots: true,
-          arrows: false,
-          centerMode: false,
-          centerPadding: "0px",
-        },
-      },
-    ],
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [slidesToShow, setSlidesToShow] = useState(3);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+  const getSlidesToShow = () => {
+    if (typeof window !== "undefined") {
+      if (window.innerWidth < 640) return 1;
+      if (window.innerWidth < 1024) return 2;
+      return 3;
+    }
+    return 3;
   };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setSlidesToShow(getSlidesToShow());
+      setCurrentSlide(0);
+    };
+
+    if (typeof window !== "undefined") {
+      handleResize();
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }
+  }, []);
+
+  const maxSlides = Math.max(0, TestimonialData.length - slidesToShow);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev >= maxSlides ? 0 : prev + 1));
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev <= 0 ? maxSlides : prev - 1));
+  };
+
+  const goToSlide = (index) => {
+    setCurrentSlide(Math.min(index, maxSlides));
+  };
+
+  // === Auto Slide ===
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 3000); // 3 detik
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, maxSlides, slidesToShow]);
 
   const renderStars = (rating) => {
     const fullStars = Math.floor(rating);
@@ -130,29 +121,24 @@ const Testimonial = () => {
     const emptyStars = 5 - fullStars - halfStars;
 
     return (
-      <div className="flex items-center gap-1">
+      <div className="flex items-center gap-0.5 sm:gap-1">
         {Array(fullStars)
           .fill(null)
           .map((_, i) => (
-            <Icon
+            <Star
               key={`full-${i}`}
-              icon="tabler:star-filled"
-              className="text-yellow-500 text-lg sm:text-xl"
+              className="text-yellow-500 fill-yellow-500 w-4 h-4 sm:w-5 sm:h-5"
             />
           ))}
         {halfStars > 0 && (
-          <Icon
-            icon="tabler:star-half-filled"
-            className="text-yellow-500 text-lg sm:text-xl"
-          />
+          <Star className="text-yellow-500 fill-yellow-500/50 w-4 h-4 sm:w-5 sm:h-5" />
         )}
         {Array(emptyStars)
           .fill(null)
           .map((_, i) => (
-            <Icon
+            <Star
               key={`empty-${i}`}
-              icon="tabler:star-filled"
-              className="text-gray-300 text-lg sm:text-xl"
+              className="text-gray-300 w-4 h-4 sm:w-5 sm:h-5"
             />
           ))}
       </div>
@@ -160,203 +146,156 @@ const Testimonial = () => {
   };
 
   return (
-    <section id="testimonial" className="py-16 sm:py-20 lg:py-24 bg-gray-50/50">
-      <div className="container mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-12 sm:mb-16 lg:mb-20">
-          <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full mb-4">
-            <Icon
-              icon="tabler:message-circle-2"
-              className="text-primary text-xl"
-            />
-            <span className="text-primary font-semibold text-sm sm:text-base">
+    <section
+      id="testimonial"
+      className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-blue-50/30"
+    >
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+          <div className="inline-flex items-center gap-2 bg-blue-100 px-3 sm:px-4 py-2 rounded-full mb-4">
+            <MessageSquare className="text-blue-600 w-4 h-4 sm:w-5 sm:h-5" />
+            <span className="text-blue-700 font-semibold text-xs sm:text-sm">
               Client Testimonials
             </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
-            What Our <span className="text-primary">Clients Say</span>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 lg:mb-6">
+            What Our <span className="text-blue-600">Clients Say</span>
           </h2>
-          <p className="text-gray-600 text-lg sm:text-xl max-w-3xl mx-auto">
+          <p className="text-gray-600 text-base sm:text-lg lg:text-xl max-w-2xl lg:max-w-3xl mx-auto leading-relaxed">
             Don't just take our word for it. Here's what our clients have to say
             about working with us.
           </p>
         </div>
 
-        {/* Testimonial Slider */}
-        <div className="testimonial-slider relative">
-          <Slider {...settings}>
-            {TestimonialData.map((item, i) => (
-              <div key={i} className="px-2 sm:px-3 lg:px-4">
+        {/* Cards */}
+        <div className="relative">
+          {/* Arrows (desktop) */}
+          <div className="hidden md:block">
+            <button
+              onClick={prevSlide}
+              className="absolute -left-4 lg:-left-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 lg:w-12 lg:h-12 bg-white rounded-full shadow-lg border border-gray-200 flex items-center justify-center hover:bg-blue-50 hover:border-blue-300 transition-all duration-200 hover:scale-110"
+              aria-label="Previous testimonial"
+            >
+              <ChevronLeft className="w-5 h-5 lg:w-6 lg:h-6 text-gray-600" />
+            </button>
+
+            <button
+              onClick={nextSlide}
+              className="absolute -right-4 lg:-right-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 lg:w-12 lg:h-12 bg-white rounded-full shadow-lg border border-gray-200 flex items-center justify-center hover:bg-blue-50 hover:border-blue-300 transition-all duration-200 hover:scale-110"
+              aria-label="Next testimonial"
+            >
+              <ChevronRight className="w-5 h-5 lg:w-6 lg:h-6 text-gray-600" />
+            </button>
+          </div>
+
+          {/* Cards container */}
+          <div
+            className="overflow-hidden px-2 sm:px-4"
+            onMouseEnter={() => setIsAutoPlaying(false)}
+            onMouseLeave={() => setIsAutoPlaying(true)}
+          >
+            <div
+              className="flex transition-transform duration-500 ease-in-out gap-4 sm:gap-6 py-4 sm:py-6"
+              style={{
+                transform: `translateX(-${
+                  currentSlide * (100 / slidesToShow)
+                }%)`,
+              }}
+            >
+              {TestimonialData.map((item, i) => (
                 <div
-                  className={`bg-white rounded-2xl lg:rounded-3xl p-6 sm:p-8 lg:p-10 my-12 sm:my-16 lg:my-20 relative transition-all duration-300 hover:shadow-2xl group ${
-                    i % 2
-                      ? "shadow-lg hover:shadow-blue-100"
-                      : "shadow-lg hover:shadow-purple-100"
+                  key={i}
+                  className={`flex-shrink-0 ${
+                    slidesToShow === 1
+                      ? "w-full"
+                      : slidesToShow === 2
+                      ? "w-1/2"
+                      : "w-1/3"
                   }`}
                 >
-                  {/* Quote Icon */}
-                  <div className="absolute -top-4 left-6 sm:left-8 bg-primary rounded-full p-3 shadow-lg">
-                    <Icon
-                      icon="tabler:quote"
-                      className="text-white text-xl sm:text-2xl"
-                    />
-                  </div>
+                  <div className="bg-white rounded-xl lg:rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg hover:shadow-xl transition-all duration-300 group relative min-h-[280px] sm:min-h-[320px] flex flex-col mt-4 sm:mt-6">
+                    {/* Quote */}
+                    <div className="absolute -top-2 sm:-top-3 left-4 sm:left-6 bg-blue-600 rounded-full p-2 sm:p-3 shadow-lg">
+                      <Quote className="text-white w-4 h-4 sm:w-5 sm:h-5" />
+                    </div>
 
-                  {/* User Photo */}
-                  <div className="absolute -top-6 sm:-top-8 lg:-top-10 right-6 sm:right-8">
-                    <div className="relative">
-                      <img
-                        src={item.imgSrc}
-                        alt={`${item.name} - ${item.profession}`}
-                        className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-full object-cover border-4 border-white shadow-lg group-hover:scale-110 transition-transform duration-300"
-                      />
-                      {/* Verified Badge */}
-                      <div className="absolute -bottom-1 -right-1 bg-success rounded-full p-1">
-                        <Icon
-                          icon="tabler:check"
-                          className="text-white text-xs sm:text-sm"
+                    {/* Photo */}
+                    <div className="absolute -top-2 sm:-top-3 right-4 sm:right-6">
+                      <div className="relative">
+                        <img
+                          src={item.imgSrc}
+                          alt={`${item.name} - ${item.profession}`}
+                          className="w-12 h-12 sm:w-16 sm:h-16 lg:w-18 lg:h-18 rounded-full object-cover border-3 sm:border-4 border-white shadow-lg group-hover:scale-110 transition-transform duration-300"
                         />
+                        <div className="absolute -bottom-0.5 -right-0.5 bg-green-500 rounded-full p-0.5 sm:p-1">
+                          <Check className="text-white w-2 h-2 sm:w-3 sm:h-3" />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="pt-8 sm:pt-10 flex flex-col flex-grow">
+                      <div className="mb-3 sm:mb-4">
+                        {renderStars(item.rating)}
+                      </div>
+                      <blockquote className="text-gray-700 text-sm sm:text-base lg:text-lg leading-relaxed mb-4 sm:mb-6 font-medium italic flex-grow">
+                        "{item.comment}"
+                      </blockquote>
+                      <div className="border-t border-gray-100 pt-3 sm:pt-4 mt-auto">
+                        <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 mb-1">
+                          {item.name}
+                        </h3>
+                        <p className="text-xs sm:text-sm lg:text-base text-gray-500 font-medium">
+                          {item.profession}
+                        </p>
                       </div>
                     </div>
                   </div>
-
-                  {/* Content */}
-                  <div className="pt-8 sm:pt-10 lg:pt-12">
-                    {/* Rating */}
-                    <div className="mb-4 sm:mb-6">
-                      {renderStars(item.rating)}
-                    </div>
-
-                    {/* Comment */}
-                    <blockquote className="text-gray-700 text-base sm:text-lg lg:text-xl leading-relaxed mb-6 sm:mb-8 font-medium italic">
-                      "{item.comment}"
-                    </blockquote>
-
-                    {/* User Info */}
-                    <div className="border-t border-gray-100 pt-4 sm:pt-6">
-                      <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-1">
-                        {item.name}
-                      </h3>
-                      <p className="text-sm sm:text-base text-gray-500 font-medium">
-                        {item.profession}
-                      </p>
-                    </div>
-                  </div>
                 </div>
-              </div>
-            ))}
-          </Slider>
-        </div>
+              ))}
+            </div>
+          </div>
 
-        {/* Bottom CTA */}
-        <div className="text-center mt-12 sm:mt-16 lg:mt-20">
-          <p className="text-gray-600 mb-6 text-base sm:text-lg">
-            Ready to join our satisfied clients?
-          </p>
-          <button className="bg-primary hover:bg-primary/90 text-white px-8 py-3 sm:px-10 sm:py-4 rounded-lg font-semibold text-base sm:text-lg transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105">
-            Start Your Project
-          </button>
+          {/* Dots */}
+          <div className="flex justify-center mt-6 sm:mt-8 lg:mt-12 gap-2">
+            {Array(maxSlides + 1)
+              .fill(null)
+              .map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-200 ${
+                    currentSlide === index
+                      ? "bg-blue-600 scale-125"
+                      : "bg-gray-300 hover:bg-blue-400"
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+          </div>
+
+          {/* Mobile Arrows */}
+          <div className="flex justify-center gap-4 mt-4 md:hidden">
+            <button
+              onClick={prevSlide}
+              className="w-10 h-10 bg-white rounded-full shadow-lg border border-gray-200 flex items-center justify-center hover:bg-blue-50 transition-colors"
+              aria-label="Previous testimonial"
+            >
+              <ChevronLeft className="w-5 h-5 text-gray-600" />
+            </button>
+            <button
+              onClick={nextSlide}
+              className="w-10 h-10 bg-white rounded-full shadow-lg border border-gray-200 flex items-center justify-center hover:bg-blue-50 transition-colors"
+              aria-label="Next testimonial"
+            >
+              <ChevronRight className="w-5 h-5 text-gray-600" />
+            </button>
+          </div>
         </div>
       </div>
-
-      {/* Custom Styles */}
-      <style jsx>{`
-        .testimonial-slider .slick-dots {
-          bottom: -60px;
-          display: flex !important;
-          justify-content: center;
-          gap: 12px;
-        }
-
-        .testimonial-slider .slick-dots li {
-          margin: 0;
-          width: 12px;
-          height: 12px;
-        }
-
-        .testimonial-slider .slick-dots li button {
-          width: 12px;
-          height: 12px;
-          border-radius: 50%;
-          background: #d1d5db;
-          border: none;
-          font-size: 0;
-          transition: all 0.3s ease;
-        }
-
-        .testimonial-slider .slick-dots li button:hover {
-          background: #6366f1;
-          transform: scale(1.2);
-        }
-
-        .testimonial-slider .slick-dots li.slick-active button {
-          background: #6366f1;
-          transform: scale(1.3);
-        }
-
-        .testimonial-slider .slick-arrow {
-          z-index: 10;
-          width: 48px;
-          height: 48px;
-          border-radius: 50%;
-          background: white;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-          border: 1px solid #e5e7eb;
-          transition: all 0.3s ease;
-        }
-
-        .testimonial-slider .slick-arrow:hover {
-          background: #6366f1;
-          transform: scale(1.1);
-          box-shadow: 0 6px 20px rgba(99, 102, 241, 0.3);
-        }
-
-        .testimonial-slider .slick-prev {
-          left: -60px;
-        }
-
-        .testimonial-slider .slick-next {
-          right: -60px;
-        }
-
-        @media (max-width: 1024px) {
-          .testimonial-slider .slick-prev {
-            left: -40px;
-          }
-          .testimonial-slider .slick-next {
-            right: -40px;
-          }
-        }
-
-        @media (max-width: 768px) {
-          .testimonial-slider .slick-arrow {
-            display: none !important;
-          }
-        }
-      `}</style>
     </section>
   );
 };
-
-// Custom Arrow Components
-const CustomPrevArrow = ({ onClick }) => (
-  <button
-    onClick={onClick}
-    className="slick-arrow slick-prev flex items-center justify-center"
-    aria-label="Previous testimonial"
-  >
-    <Icon icon="tabler:chevron-left" className="text-gray-600 text-xl" />
-  </button>
-);
-
-const CustomNextArrow = ({ onClick }) => (
-  <button
-    onClick={onClick}
-    className="slick-arrow slick-next flex items-center justify-center"
-    aria-label="Next testimonial"
-  >
-    <Icon icon="tabler:chevron-right" className="text-gray-600 text-xl" />
-  </button>
-);
 
 export default Testimonial;
