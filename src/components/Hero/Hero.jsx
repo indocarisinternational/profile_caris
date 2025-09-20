@@ -144,7 +144,7 @@ const Hero = () => {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
             <div className="space-y-2">
               <h3 className="text-2xl sm:text-3xl font-bold text-primary">
-                100+
+                10+
               </h3>
               <p className="text-gray-600 text-sm sm:text-base">
                 Projects Completed
@@ -152,7 +152,7 @@ const Hero = () => {
             </div>
             <div className="space-y-2">
               <h3 className="text-2xl sm:text-3xl font-bold text-primary">
-                50+
+                5+
               </h3>
               <p className="text-gray-600 text-sm sm:text-base">
                 Happy Clients
@@ -160,7 +160,7 @@ const Hero = () => {
             </div>
             <div className="space-y-2">
               <h3 className="text-2xl sm:text-3xl font-bold text-primary">
-                5+
+                2+
               </h3>
               <p className="text-gray-600 text-sm sm:text-base">
                 Years Experience
