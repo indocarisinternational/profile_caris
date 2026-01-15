@@ -1,6 +1,9 @@
 import { Icon } from "@iconify/react";
+import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
+  const { t } = useTranslation();
   return (
     <section id="home-section" style={{ backgroundColor: "#f6faff" }}>
       <div className="container mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 lg:pt-32 pb-16 sm:pb-20 lg:pb-24">
@@ -21,14 +24,12 @@ const Hero = () => {
             {/* Main Heading */}
             <div className="space-y-4 sm:space-y-6">
               <h1 className="text-midnight_text text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
-                Leading <span className="text-primary">IT Consultant Jakarta</span> - Creating{" "}
-                <span className="text-primary">Scalable</span> Digital Solutions
+                {t("hero.title")} <span className="text-primary">{t("hero.titleHighlight")}</span> - {t("hero.subtitle")}{" "}
+                <span className="text-primary">{t("hero.subtitleHighlight")}</span>
               </h1>
 
               <p className="text-black/70 text-base sm:text-lg lg:text-xl leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                Transform your business with Indo Caris International's expert IT consulting services. 
-                We deliver innovative software development, digital transformation strategies, and 
-                comprehensive technology solutions for companies across Jakarta and Indonesia.
+                {t("hero.description")}
               </p>
             </div>
 
@@ -109,14 +110,20 @@ const Hero = () => {
               </div>
             </div>
 
-            {/* CTA Buttons - Optional */}
+            {/* CTA Buttons */}
             <div className="pt-6 sm:pt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <button className="bg-primary hover:bg-primary/90 text-black px-8 py-3 rounded-lg font-semibold transition-colors duration-200 shadow-lg hover:shadow-xl">
-                Get Started
-              </button>
-              <button className="border-2 border-primary text-primary hover:bg-primary hover:text-gray-400 px-8 py-3 rounded-lg font-semibold transition-all duration-200">
-                Learn More
-              </button>
+              <Link
+                to="/contact"
+                className="bg-primary hover:bg-primary/90 text-black px-8 py-3 rounded-lg font-semibold transition-colors duration-200 shadow-lg hover:shadow-xl text-center"
+              >
+                {t("hero.cta_start")}
+              </Link>
+              <Link
+                to="/services"
+                className="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-3 rounded-lg font-semibold transition-all duration-200 text-center"
+              >
+                {t("hero.cta_learn")}
+              </Link>
             </div>
           </div>
 
@@ -139,7 +146,7 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Bottom Stats or Additional Info - Optional */}
+        {/* Bottom Stats */}
         <div className="mt-16 sm:mt-20 lg:mt-24 pt-8 border-t border-gray-200/50">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
             <div className="space-y-2">
@@ -147,7 +154,7 @@ const Hero = () => {
                 10+
               </h3>
               <p className="text-gray-600 text-sm sm:text-base">
-                Projects Completed
+                {t("hero.stats_projects")}
               </p>
             </div>
             <div className="space-y-2">
@@ -155,7 +162,7 @@ const Hero = () => {
                 5+
               </h3>
               <p className="text-gray-600 text-sm sm:text-base">
-                Happy Clients
+                {t("hero.stats_clients")}
               </p>
             </div>
             <div className="space-y-2">
@@ -163,7 +170,7 @@ const Hero = () => {
                 2+
               </h3>
               <p className="text-gray-600 text-sm sm:text-base">
-                Years Experience
+                {t("hero.stats_experience")}
               </p>
             </div>
           </div>

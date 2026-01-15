@@ -1,12 +1,13 @@
-"use client";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { supabase } from "../../supabaseClient";
+import { useTranslation } from "react-i18next";
 
 const Teams = () => {
+  const { t } = useTranslation();
   const [employees, setEmployees] = useState([]);
   const navigate = useNavigate();
 
@@ -53,9 +54,8 @@ const Teams = () => {
 
   const getImageUrl = (path) => {
     if (!path) return "/images/default-avatar.png";
-    return `${
-      import.meta.env.VITE_SUPABASE_URL
-    }/storage/v1/object/public/employees/${path}`;
+    return `${import.meta.env.VITE_SUPABASE_URL
+      }/storage/v1/object/public/employees/${path}`;
   };
 
   const slugify = (name) =>
@@ -68,7 +68,7 @@ const Teams = () => {
     <section style={{ backgroundColor: "#d5effa" }} id="employees">
       <div className="container mx-auto max-w-screen-xl px-4 relative mt-40 pt-10">
         <h2 className="text-black text-3xl md:text-4xl lg:text-5xl font-bold mb-12 text-center md:text-left">
-          Meet with our <br /> Teams.
+          {t("teams.title")} <br /> {t("teams.subtitle")}
         </h2>
 
         <Slider {...settings}>

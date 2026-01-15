@@ -7,6 +7,7 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export const TestimonialData = [
   {
@@ -60,6 +61,7 @@ export const TestimonialData = [
 ];
 
 const Testimonial = () => {
+  const { t } = useTranslation();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [slidesToShow, setSlidesToShow] = useState(3);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
@@ -150,15 +152,14 @@ const Testimonial = () => {
           <div className="inline-flex items-center gap-2 bg-blue-100 px-3 sm:px-4 py-2 rounded-full mb-4">
             <MessageSquare className="text-blue-600 w-4 h-4 sm:w-5 sm:h-5" />
             <span className="text-blue-700 font-semibold text-xs sm:text-sm">
-              Client Testimonials
+              {t("testimonials.badge")}
             </span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 lg:mb-6">
-            What Our <span className="text-blue-600">Clients Say</span>
+            {t("testimonials.title")} <span className="text-blue-600">{t("testimonials.title_highlight")}</span>
           </h2>
           <p className="text-gray-600 text-base sm:text-lg lg:text-xl max-w-2xl lg:max-w-3xl mx-auto leading-relaxed">
-            Don't just take our word for it. Here's what our clients have to say
-            about working with us.
+            {t("testimonials.description")}
           </p>
         </div>
 
@@ -192,21 +193,19 @@ const Testimonial = () => {
             <div
               className="flex transition-transform duration-500 ease-in-out gap-4 sm:gap-6 py-4 sm:py-6"
               style={{
-                transform: `translateX(-${
-                  currentSlide * (100 / slidesToShow)
-                }%)`,
+                transform: `translateX(-${currentSlide * (100 / slidesToShow)
+                  }%)`,
               }}
             >
               {TestimonialData.map((item, i) => (
                 <div
                   key={i}
-                  className={`flex-shrink-0 ${
-                    slidesToShow === 1
-                      ? "w-full"
-                      : slidesToShow === 2
+                  className={`flex-shrink-0 ${slidesToShow === 1
+                    ? "w-full"
+                    : slidesToShow === 2
                       ? "w-1/2"
                       : "w-1/3"
-                  }`}
+                    }`}
                 >
                   <div className="bg-white rounded-xl lg:rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg hover:shadow-xl transition-all duration-300 group relative min-h-[280px] sm:min-h-[320px] flex flex-col mt-4 sm:mt-6">
                     {/* Quote */}
@@ -259,11 +258,10 @@ const Testimonial = () => {
                 <button
                   key={index}
                   onClick={() => goToSlide(index)}
-                  className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-200 ${
-                    currentSlide === index
-                      ? "bg-blue-600 scale-125"
-                      : "bg-gray-300 hover:bg-blue-400"
-                  }`}
+                  className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-200 ${currentSlide === index
+                    ? "bg-blue-600 scale-125"
+                    : "bg-gray-300 hover:bg-blue-400"
+                    }`}
                   aria-label={`Go to slide ${index + 1}`}
                 />
               ))}

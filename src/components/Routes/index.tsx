@@ -1,6 +1,9 @@
 export const headerData = [
-  { label: "Home", href: "/#home-section" },
-  { label: "Project", href: "/#projects" },
-  { label: "Teams", href: "/#employees" },
-  { label: "Testimonial", href: "/#testimonial" },
+  { label: "nav.home", href: "/#home-section" },
+  { label: "nav.project", href: "/#projects" },
+  { label: "nav.teams", href: "/#employees" },
+  { label: "nav.testimonial", href: "/#testimonial" },
+  { label: "nav.about", href: "/about" },
+  { label: "nav.services", href: "/services" },
+  { label: "nav.contact", href: "/contact" },
 ];

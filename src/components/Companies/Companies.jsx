@@ -3,8 +3,10 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { supabase } from "../../supabaseClient";
+import { useTranslation } from "react-i18next";
 
 const Companies = () => {
+  const { t } = useTranslation();
   const [clients, setClients] = useState([]);
 
   useEffect(() => {
@@ -67,7 +69,7 @@ const Companies = () => {
     <section className="text-center">
       <div className="container mx-auto max-w-screen-xl px-4 mt-20 sm:mt-32 lg:mt-40">
         <h2 className="text-gray-800 text-xl sm:text-2xl font-semibold">
-          Trusted by Innovators Everywhere
+          {t("companies.title")}
         </h2>
         <div className="py-10 sm:py-14 border-b border-gray-300">
           <Slider {...settings}>

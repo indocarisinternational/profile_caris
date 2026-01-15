@@ -4,8 +4,10 @@ import { supabase } from "../../supabaseClient";
 import SEO from "../SEO/SEO";
 import Schema from "../SEO/Schema";
 import QRCode from "react-qr-code";
+import { useTranslation } from "react-i18next";
 
 const DetailTeam = () => {
+  const { t } = useTranslation();
   const { slug } = useParams();
   const [employee, setEmployee] = useState(null);
   const [darkMode, setDarkMode] = useState(false);
@@ -304,7 +306,7 @@ const DetailTeam = () => {
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-400 to-purple-500">
         <div className="text-center">
           <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-white mx-auto"></div>
-          <p className="text-xl text-white mt-4">Loading employee detail...</p>
+          <p className="text-xl text-white mt-4">{t("detail.loading")}</p>
         </div>
       </div>
     );
@@ -322,7 +324,7 @@ const DetailTeam = () => {
             className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full transition-all duration-300 inline-flex items-center"
           >
             <ArrowLeftIcon />
-            Back to Team
+            {t("detail.back")}
           </Link>
         </div>
       </div>
@@ -335,17 +337,17 @@ const DetailTeam = () => {
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-400 to-gray-600">
         <div className="text-center bg-white rounded-lg p-8 shadow-2xl">
           <h2 className="text-2xl font-bold text-gray-700 mb-4">
-            Employee Not Found
+            {t("detail.employee_not_found")}
           </h2>
           <p className="text-gray-600 mb-6">
-            The employee you're looking for doesn't exist.
+            {t("detail.employee_not_found_desc")}
           </p>
           <Link
             to="/team"
             className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full transition-all duration-300 inline-flex items-center"
           >
             <ArrowLeftIcon />
-            Back to Team
+            {t("detail.back")}
           </Link>
         </div>
       </div>
@@ -358,13 +360,11 @@ const DetailTeam = () => {
     <>
       <SEO
         title={`${employee.full_name} - ${employee.position} | Indo Caris International`}
-        description={`Meet ${employee.full_name}, ${
-          employee.position
-        } at Indo Caris International. ${
-          employee.specialization
+        description={`Meet ${employee.full_name}, ${employee.position
+          } at Indo Caris International. ${employee.specialization
             ? employee.specialization
             : `Expert in ${employee.department} with extensive experience in digital solutions and technology consulting.`
-        }`}
+          }`}
         keywords={`${employee.full_name}, ${employee.position}, ${employee.department}, Indo Caris International, IT Consultant Jakarta, Team Member`}
         url={`/${slug}`}
         type="profile"
@@ -379,24 +379,21 @@ const DetailTeam = () => {
             employee.specialization ||
             `${employee.position} at Indo Caris International with expertise in ${employee.department}`,
           image: employee.profile_photo_url
-            ? `${
-                import.meta.env.VITE_SUPABASE_URL
-              }/storage/v1/object/public/employees/${
-                employee.profile_photo_url
-              }`
+            ? `${import.meta.env.VITE_SUPABASE_URL
+            }/storage/v1/object/public/employees/${employee.profile_photo_url
+            }`
             : "/images/default-avatar.png",
           socialLinks: [
             employee.linkedin_url,
             employee.instagram_url &&
-              `https://www.instagram.com/${employee.instagram_url}`,
+            `https://www.instagram.com/${employee.instagram_url}`,
             employee.portfolio_url,
           ].filter(Boolean),
         }}
       />
       <div
-        className={`relative font-sans antialiased mt-17 leading-normal tracking-wider min-h-screen bg-cover bg-center transition-all duration-300 ${
-          darkMode ? "text-gray-100" : "text-gray-900"
-        }`}
+        className={`relative font-sans antialiased mt-17 leading-normal tracking-wider min-h-screen bg-cover bg-center transition-all duration-300 ${darkMode ? "text-gray-100" : "text-gray-900"
+          }`}
         style={{ backgroundImage: `url('${backgroundImage}')` }}
       >
         {/* Back Button & Dark Mode Toggle */}
@@ -405,24 +402,22 @@ const DetailTeam = () => {
           {/* Back Button */}
           <Link
             to="/"
-            className={`inline-flex items-center px-4 py-2 rounded-full font-medium transition-all duration-300 ${
-              darkMode
-                ? "bg-gray-800 bg-opacity-80 text-white hover:bg-opacity-100"
-                : "bg-white bg-opacity-80 text-gray-700 hover:bg-opacity-100"
-            } backdrop-blur-sm shadow-lg hover:shadow-xl transform hover:scale-105`}
+            className={`inline-flex items-center px-4 py-2 rounded-full font-medium transition-all duration-300 ${darkMode
+              ? "bg-gray-800 bg-opacity-80 text-white hover:bg-opacity-100"
+              : "bg-white bg-opacity-80 text-gray-700 hover:bg-opacity-100"
+              } backdrop-blur-sm shadow-lg hover:shadow-xl transform hover:scale-105`}
           >
             <ArrowLeftIcon />
-            Back to Team
+            {t("detail.back")}
           </Link>
 
           {/* Dark Mode Toggle */}
           <button
             onClick={toggleDarkMode}
-            className={`focus:outline-none text-2xl hover:scale-110 transition-transform duration-300 p-3 rounded-full ${
-              darkMode
-                ? "bg-gray-800 bg-opacity-80 text-white hover:bg-opacity-100"
-                : "bg-white bg-opacity-80 text-gray-700 hover:bg-opacity-100"
-            } backdrop-blur-sm shadow-lg`}
+            className={`focus:outline-none text-2xl hover:scale-110 transition-transform duration-300 p-3 rounded-full ${darkMode
+              ? "bg-gray-800 bg-opacity-80 text-white hover:bg-opacity-100"
+              : "bg-white bg-opacity-80 text-gray-700 hover:bg-opacity-100"
+              } backdrop-blur-sm shadow-lg`}
             title="Toggle dark mode"
           >
             {darkMode ? "☀️" : "🌙"}
@@ -435,15 +430,12 @@ const DetailTeam = () => {
             <div
               className="block lg:hidden rounded-full shadow-xl mx-auto h-32 w-32 sm:h-40 sm:w-40 md:h-48 md:w-48 bg-cover bg-center border-4 border-white relative overflow-hidden z-20 mt-16 -mb-23 sm:-mb-36 md:-mb-40"
               style={{
-                backgroundImage: `url('${
-                  employee.profile_photo_url
-                    ? `${
-                        import.meta.env.VITE_SUPABASE_URL
-                      }/storage/v1/object/public/employees/${
-                        employee.profile_photo_url
-                      }`
-                    : "/images/default-avatar.png"
-                }')`,
+                backgroundImage: `url('${employee.profile_photo_url
+                  ? `${import.meta.env.VITE_SUPABASE_URL
+                  }/storage/v1/object/public/employees/${employee.profile_photo_url
+                  }`
+                  : "/images/default-avatar.png"
+                  }')`,
                 backgroundSize: "cover",
                 backgroundPosition: "center center",
               }}
@@ -451,11 +443,10 @@ const DetailTeam = () => {
 
             {/* Main Profile Card */}
             <div
-              className={`w-full lg:w-3/5 rounded-2xl lg:rounded-l-2xl lg:rounded-r-none shadow-2xl transition-all duration-300 backdrop-blur-sm overflow-hidden pt-16 sm:pt-20 md:pt-24 lg:pt-10 ${
-                darkMode
-                  ? "bg-gray-900 bg-opacity-90"
-                  : "bg-white bg-opacity-90"
-              }`}
+              className={`w-full lg:w-3/5 rounded-2xl lg:rounded-l-2xl lg:rounded-r-none shadow-2xl transition-all duration-300 backdrop-blur-sm overflow-hidden pt-16 sm:pt-20 md:pt-24 lg:pt-10 ${darkMode
+                ? "bg-gray-900 bg-opacity-90"
+                : "bg-white bg-opacity-90"
+                }`}
             >
               <div className="p-6 sm:p-8 lg:p-10 text-center lg:text-left space-y-6">
                 {/* Employee Code */}
@@ -474,9 +465,8 @@ const DetailTeam = () => {
 
                 {/* Company */}
                 <p
-                  className={`text-sm sm:text-base font-medium ${
-                    darkMode ? "text-gray-300" : "text-gray-600"
-                  }`}
+                  className={`text-sm sm:text-base font-medium ${darkMode ? "text-gray-300" : "text-gray-600"
+                    }`}
                 >
                   {employee.company_name}
                 </p>
@@ -501,9 +491,8 @@ const DetailTeam = () => {
 
                 {/* Department & Location */}
                 <div
-                  className={`text-sm sm:text-base flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2 ${
-                    darkMode ? "text-gray-300" : "text-gray-600"
-                  }`}
+                  className={`text-sm sm:text-base flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2 ${darkMode ? "text-gray-300" : "text-gray-600"
+                    }`}
                 >
                   <div className="flex items-center">
                     <MapPinIcon className="w-5 h-5 text-blue-600" />
@@ -516,9 +505,8 @@ const DetailTeam = () => {
                 {/* Join Date & Work Period */}
                 {employee.join_date && (
                   <div
-                    className={`text-sm sm:text-base flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2 ${
-                      darkMode ? "text-gray-300" : "text-gray-600"
-                    }`}
+                    className={`text-sm sm:text-base flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2 ${darkMode ? "text-gray-300" : "text-gray-600"
+                      }`}
                   >
                     <div className="flex items-center">
                       <CalendarIcon className="w-5 h-5 text-blue-600" />
@@ -605,9 +593,8 @@ const DetailTeam = () => {
                   )}
                   {employee.cv_url && (
                     <a
-                      href={`${
-                        import.meta.env.VITE_SUPABASE_URL
-                      }/storage/v1/object/public/employees/${employee.cv_url}`}
+                      href={`${import.meta.env.VITE_SUPABASE_URL
+                        }/storage/v1/object/public/employees/${employee.cv_url}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 flex items-center justify-center"
@@ -711,11 +698,9 @@ const DetailTeam = () => {
               <img
                 src={
                   employee.profile_photo_url
-                    ? `${
-                        import.meta.env.VITE_SUPABASE_URL
-                      }/storage/v1/object/public/employees/${
-                        employee.profile_photo_url
-                      }`
+                    ? `${import.meta.env.VITE_SUPABASE_URL
+                    }/storage/v1/object/public/employees/${employee.profile_photo_url
+                    }`
                     : "/images/default-avatar.png"
                 }
                 alt={employee.full_name}
@@ -732,129 +717,99 @@ const DetailTeam = () => {
         {(employee.work_experience ||
           employee.education ||
           employee.address) && (
-          <div className="max-w-6xl mx-auto px-4 pb-16">
-            <div
-              className={`rounded-lg shadow-2xl backdrop-blur-sm p-8 ${
-                darkMode
+            <div className="max-w-6xl mx-auto px-4 pb-16">
+              <div
+                className={`rounded-lg shadow-2xl backdrop-blur-sm p-8 ${darkMode
                   ? "bg-gray-900 bg-opacity-90"
                   : "bg-white bg-opacity-90"
-              }`}
-            >
-              <h2 className="text-2xl font-bold mb-6 text-center lg:text-left">
-                Informasi Tambahan
-              </h2>
+                  }`}
+              >
+                <h2 className="text-2xl font-bold mb-6 text-center lg:text-left">
+                  Informasi Tambahan
+                </h2>
 
-              <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
-                {/* Work Experience */}
-                {employee.work_experience && (
-                  <div className="space-y-3">
-                    <h3 className="text-lg font-semibold text-blue-600 flex items-center">
-                      <BriefcaseIcon />
-                      Pengalaman Kerja
-                    </h3>
-                    <div
-                      className={`p-4 rounded-lg ${
-                        darkMode ? "bg-gray-800" : "bg-gray-50"
-                      }`}
-                    >
-                      <p className="text-sm leading-relaxed whitespace-pre-line">
-                        {employee.work_experience}
-                      </p>
+                <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
+                  {/* Work Experience */}
+                  {employee.work_experience && (
+                    <div className="space-y-3">
+                      <h3 className="text-lg font-semibold text-blue-600 flex items-center">
+                        <BriefcaseIcon />
+                        Pengalaman Kerja
+                      </h3>
+                      <div
+                        className={`p-4 rounded-lg ${darkMode ? "bg-gray-800" : "bg-gray-50"
+                          }`}
+                      >
+                        <p className="text-sm leading-relaxed whitespace-pre-line">
+                          {employee.work_experience}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                )}
+                  )}
 
-                {/* Education */}
-                {employee.education && (
-                  <div className="space-y-3">
-                    <h3 className="text-lg font-semibold text-blue-600 flex items-center">
-                      <AcademicCapIcon />
-                      Pendidikan
-                    </h3>
-                    <div
-                      className={`p-4 rounded-lg ${
-                        darkMode ? "bg-gray-800" : "bg-gray-50"
-                      }`}
-                    >
-                      <p className="text-sm leading-relaxed whitespace-pre-line">
-                        {employee.education}
-                      </p>
+                  {/* Education */}
+                  {employee.education && (
+                    <div className="space-y-3">
+                      <h3 className="text-lg font-semibold text-blue-600 flex items-center">
+                        <AcademicCapIcon />
+                        Pendidikan
+                      </h3>
+                      <div
+                        className={`p-4 rounded-lg ${darkMode ? "bg-gray-800" : "bg-gray-50"
+                          }`}
+                      >
+                        <p className="text-sm leading-relaxed whitespace-pre-line">
+                          {employee.education}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                )}
+                  )}
 
-                {/* Address */}
-                {employee.address && (
-                  <div className="space-y-3 lg:col-span-2">
-                    <h3 className="text-lg font-semibold text-blue-600 flex items-center">
-                      <MapPinIcon />
-                      Alamat
-                    </h3>
-                    <div
-                      className={`p-4 rounded-lg ${
-                        darkMode ? "bg-gray-800" : "bg-gray-50"
-                      }`}
-                    >
-                      <p className="text-sm leading-relaxed">
-                        {employee.address}
-                      </p>
+                  {/* Address */}
+                  {employee.address && (
+                    <div className="space-y-3 lg:col-span-2">
+                      <h3 className="text-lg font-semibold text-blue-600 flex items-center">
+                        <MapPinIcon />
+                        Alamat
+                      </h3>
+                      <div
+                        className={`p-4 rounded-lg ${darkMode ? "bg-gray-800" : "bg-gray-50"
+                          }`}
+                      >
+                        <p className="text-sm leading-relaxed">
+                          {employee.address}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                )}
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
         {/* Professional Documents Section */}
         {(employee.cv_url ||
           employee.portfolio_url ||
           employee.digital_signature_url) && (
-          <div className="max-w-6xl mx-auto px-4 pb-16">
-            <div
-              className={`rounded-lg shadow-2xl backdrop-blur-sm p-8 ${
-                darkMode
+            <div className="max-w-6xl mx-auto px-4 pb-16">
+              <div
+                className={`rounded-lg shadow-2xl backdrop-blur-sm p-8 ${darkMode
                   ? "bg-gray-900 bg-opacity-90"
                   : "bg-white bg-opacity-90"
-              }`}
-            >
-              <h2 className="text-2xl font-bold mb-6 text-center lg:text-left">
-                Dokumen Professional
-              </h2>
+                  }`}
+              >
+                <h2 className="text-2xl font-bold mb-6 text-center lg:text-left">
+                  Dokumen Professional
+                </h2>
 
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {employee.cv_url && (
-                  <div className="text-center">
-                    <div
-                      className={`p-6 rounded-lg ${
-                        darkMode ? "bg-gray-800" : "bg-gray-50"
-                      } hover:shadow-lg transition-all duration-300`}
-                    >
-                      <svg
-                        className="h-12 w-12 mx-auto mb-4 text-blue-600"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                        />
-                      </svg>
-                      <h3 className="font-semibold mb-2">Curriculum Vitae</h3>
-                      <a
-                        href={`${
-                          import.meta.env.VITE_SUPABASE_URL
-                        }/storage/v1/object/public/employees/${
-                          employee.cv_url
-                        }`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-300"
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {employee.cv_url && (
+                    <div className="text-center">
+                      <div
+                        className={`p-6 rounded-lg ${darkMode ? "bg-gray-800" : "bg-gray-50"
+                          } hover:shadow-lg transition-all duration-300`}
                       >
                         <svg
-                          className="w-4 h-4 mr-2"
+                          className="h-12 w-12 mx-auto mb-4 text-blue-600"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -863,98 +818,115 @@ const DetailTeam = () => {
                             strokeLinecap="round"
                             strokeLinejoin="round"
                             strokeWidth={2}
-                            d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                           />
                         </svg>
-                        Download CV
-                      </a>
+                        <h3 className="font-semibold mb-2">Curriculum Vitae</h3>
+                        <a
+                          href={`${import.meta.env.VITE_SUPABASE_URL
+                            }/storage/v1/object/public/employees/${employee.cv_url
+                            }`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-300"
+                        >
+                          <svg
+                            className="w-4 h-4 mr-2"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                            />
+                          </svg>
+                          Download CV
+                        </a>
+                      </div>
                     </div>
-                  </div>
-                )}
+                  )}
 
-                {employee.portfolio_url && (
-                  <div className="text-center">
-                    <div
-                      className={`p-6 rounded-lg ${
-                        darkMode ? "bg-gray-800" : "bg-gray-50"
-                      } hover:shadow-lg transition-all duration-300`}
-                    >
-                      <svg
-                        className="h-12 w-12 mx-auto mb-4 text-purple-600"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
+                  {employee.portfolio_url && (
+                    <div className="text-center">
+                      <div
+                        className={`p-6 rounded-lg ${darkMode ? "bg-gray-800" : "bg-gray-50"
+                          } hover:shadow-lg transition-all duration-300`}
                       >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
-                        />
-                      </svg>
-                      <h3 className="font-semibold mb-2">Portfolio</h3>
-                      <a
-                        href={employee.portfolio_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-300"
-                      >
-                        <ExternalLinkIcon />
-                        View Portfolio
-                      </a>
+                        <svg
+                          className="h-12 w-12 mx-auto mb-4 text-purple-600"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                          />
+                        </svg>
+                        <h3 className="font-semibold mb-2">Portfolio</h3>
+                        <a
+                          href={employee.portfolio_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-300"
+                        >
+                          <ExternalLinkIcon />
+                          View Portfolio
+                        </a>
+                      </div>
                     </div>
-                  </div>
-                )}
+                  )}
 
-                {employee.digital_signature_url && (
-                  <div className="text-center">
-                    <div
-                      className={`p-6 rounded-lg ${
-                        darkMode ? "bg-gray-800" : "bg-gray-50"
-                      } hover:shadow-lg transition-all duration-300`}
-                    >
-                      <svg
-                        className="h-12 w-12 mx-auto mb-4 text-green-600"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
+                  {employee.digital_signature_url && (
+                    <div className="text-center">
+                      <div
+                        className={`p-6 rounded-lg ${darkMode ? "bg-gray-800" : "bg-gray-50"
+                          } hover:shadow-lg transition-all duration-300`}
                       >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                        <svg
+                          className="h-12 w-12 mx-auto mb-4 text-green-600"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                          />
+                        </svg>
+                        <h3 className="font-semibold mb-2">Digital Signature</h3>
+                        <img
+                          src={`${import.meta.env.VITE_SUPABASE_URL
+                            }/storage/v1/object/public/employees/${employee.digital_signature_url
+                            }`}
+                          alt={`${employee.full_name} Digital Signature`}
+                          className="max-h-16 mx-auto bg-white p-2 rounded border"
+                          onError={(e) => {
+                            e.target.style.display = "none";
+                          }}
                         />
-                      </svg>
-                      <h3 className="font-semibold mb-2">Digital Signature</h3>
-                      <img
-                        src={`${
-                          import.meta.env.VITE_SUPABASE_URL
-                        }/storage/v1/object/public/employees/${
-                          employee.digital_signature_url
-                        }`}
-                        alt={`${employee.full_name} Digital Signature`}
-                        className="max-h-16 mx-auto bg-white p-2 rounded border"
-                        onError={(e) => {
-                          e.target.style.display = "none";
-                        }}
-                      />
+                      </div>
                     </div>
-                  </div>
-                )}
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
         {/* Personal Information Section (Sensitive - Optional) */}
         {(employee.blood_type || employee.join_date) && (
           <div className="max-w-6xl mx-auto px-4 pb-16">
             <div
-              className={`rounded-lg shadow-2xl backdrop-blur-sm p-8 ${
-                darkMode
-                  ? "bg-gray-900 bg-opacity-90"
-                  : "bg-white bg-opacity-90"
-              }`}
+              className={`rounded-lg shadow-2xl backdrop-blur-sm p-8 ${darkMode
+                ? "bg-gray-900 bg-opacity-90"
+                : "bg-white bg-opacity-90"
+                }`}
             >
               <h2 className="text-2xl font-bold mb-6 text-center lg:text-left">
                 Informasi Personal
@@ -964,9 +936,8 @@ const DetailTeam = () => {
                 {employee.blood_type && (
                   <div className="text-center">
                     <div
-                      className={`p-4 rounded-lg ${
-                        darkMode ? "bg-gray-800" : "bg-red-50"
-                      }`}
+                      className={`p-4 rounded-lg ${darkMode ? "bg-gray-800" : "bg-red-50"
+                        }`}
                     >
                       <h4 className="font-semibold text-red-600 mb-1">
                         Golongan Darah
@@ -981,9 +952,8 @@ const DetailTeam = () => {
                 {employee.join_date && (
                   <div className="text-center">
                     <div
-                      className={`p-4 rounded-lg ${
-                        darkMode ? "bg-gray-800" : "bg-green-50"
-                      }`}
+                      className={`p-4 rounded-lg ${darkMode ? "bg-gray-800" : "bg-green-50"
+                        }`}
                     >
                       <h4 className="font-semibold text-green-600 mb-1">
                         Tanggal Bergabung
@@ -998,9 +968,8 @@ const DetailTeam = () => {
                 {employee.nik_internal && (
                   <div className="text-center">
                     <div
-                      className={`p-4 rounded-lg ${
-                        darkMode ? "bg-gray-800" : "bg-blue-50"
-                      }`}
+                      className={`p-4 rounded-lg ${darkMode ? "bg-gray-800" : "bg-blue-50"
+                        }`}
                     >
                       <h4 className="font-semibold text-blue-600 mb-1">
                         NIK Internal
@@ -1015,9 +984,8 @@ const DetailTeam = () => {
                 {calculateWorkPeriod(employee.join_date) && (
                   <div className="text-center">
                     <div
-                      className={`p-4 rounded-lg ${
-                        darkMode ? "bg-gray-800" : "bg-purple-50"
-                      }`}
+                      className={`p-4 rounded-lg ${darkMode ? "bg-gray-800" : "bg-purple-50"
+                        }`}
                     >
                       <h4 className="font-semibold text-purple-600 mb-1">
                         Masa Kerja
@@ -1037,11 +1005,10 @@ const DetailTeam = () => {
         {employee.qr_code_url && (
           <div className="max-w-6xl mx-auto px-4 pb-16">
             <div
-              className={`rounded-lg shadow-2xl backdrop-blur-sm p-8 text-center ${
-                darkMode
-                  ? "bg-gray-900 bg-opacity-90"
-                  : "bg-white bg-opacity-90"
-              }`}
+              className={`rounded-lg shadow-2xl backdrop-blur-sm p-8 text-center ${darkMode
+                ? "bg-gray-900 bg-opacity-90"
+                : "bg-white bg-opacity-90"
+                }`}
             >
               <h2 className="text-2xl font-bold mb-6">QR Code Profile</h2>
               <div className="inline-block p-4 bg-white rounded-lg shadow-inner">

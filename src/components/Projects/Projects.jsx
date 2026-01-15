@@ -4,8 +4,10 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { supabase } from "../../supabaseClient";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Projects = () => {
+  const { t } = useTranslation();
   const [projects, setProjects] = useState([]);
   const [isMobile, setIsMobile] = useState(false);
   const [visibleCount, setVisibleCount] = useState(3); // awalnya 3
@@ -44,8 +46,7 @@ const Projects = () => {
   };
 
   const getImageUrl = (path) =>
-    `${
-      import.meta.env.VITE_SUPABASE_URL
+    `${import.meta.env.VITE_SUPABASE_URL
     }/storage/v1/object/public/projects/${path}`;
 
   const formatDate = (dateString) => {
@@ -79,13 +80,12 @@ const Projects = () => {
           <div className="flex justify-between items-center py-2 border-t border-gray-200 mt-4">
             <span className="text-xs text-gray-600">{proj.jenis_project}</span>
             <span
-              className={`px-2 py-1 rounded-full text-[10px] sm:text-xs font-medium ${
-                proj.status === "selesai"
+              className={`px-2 py-1 rounded-full text-[10px] sm:text-xs font-medium ${proj.status === "selesai"
                   ? "bg-green-100 text-green-700"
                   : proj.status === "proses"
-                  ? "bg-yellow-100 text-yellow-700"
-                  : "bg-gray-100 text-gray-700"
-              }`}
+                    ? "bg-yellow-100 text-yellow-700"
+                    : "bg-gray-100 text-gray-700"
+                }`}
             >
               {proj.status}
             </span>
@@ -103,13 +103,13 @@ const Projects = () => {
       <div className="container mx-auto max-w-screen-xl px-4">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-12">
           <h2 className="text-gray-950 text-3xl md:text-4xl font-bold mb-4 sm:mb-0">
-            Our Projects.
+            {t("projects.title")}
           </h2>
           <Link
-            to="/"
+            to="/#projects"
             className="text-blue-500 text-base md:text-lg font-medium hover:tracking-widest duration-500"
           >
-            Explore projects&nbsp;&gt;&nbsp;
+            {t("projects.explore")}&nbsp;&gt;&nbsp;
           </Link>
         </div>
 

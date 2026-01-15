@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const MobileHeaderLink = ({ item, onNavigate }) => {
+  const { t } = useTranslation();
   const [submenuOpen, setSubmenuOpen] = useState(false);
   const location = useLocation();
 
@@ -50,22 +52,20 @@ const MobileHeaderLink = ({ item, onNavigate }) => {
       {item.href.includes("#") ? (
         <button
           onClick={handleToggle}
-          className={`flex items-center justify-between w-full py-3 px-4 rounded-lg text-lg font-medium transition-colors duration-200 ${
-            isActive
-              ? "text-black bg-gray-50"
-              : "text-gray-600 hover:text-black hover:bg-gray-50"
-          }`}
+          className={`flex items-center justify-between w-full py-3 px-4 rounded-lg text-lg font-medium transition-colors duration-200 ${isActive
+            ? "text-black bg-gray-50"
+            : "text-gray-600 hover:text-black hover:bg-gray-50"
+            }`}
         >
-          <span className="capitalize">{item.label}</span>
+          <span className="capitalize">{t(item.label)}</span>
           {item.submenu && (
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
               height="20"
               viewBox="0 0 24 24"
-              className={`transition-transform duration-200 flex-shrink-0 ${
-                submenuOpen ? "rotate-180" : ""
-              }`}
+              className={`transition-transform duration-200 flex-shrink-0 ${submenuOpen ? "rotate-180" : ""
+                }`}
             >
               <path
                 fill="none"
@@ -82,13 +82,12 @@ const MobileHeaderLink = ({ item, onNavigate }) => {
         <Link
           to={item.href}
           onClick={handleToggle}
-          className={`flex items-center justify-between w-full py-3 px-4 rounded-lg text-lg font-medium transition-colors duration-200 ${
-            isActive
-              ? "text-black bg-gray-50"
-              : "text-gray-600 hover:text-black hover:bg-gray-50"
-          }`}
+          className={`flex items-center justify-between w-full py-3 px-4 rounded-lg text-lg font-medium transition-colors duration-200 ${isActive
+            ? "text-black bg-gray-50"
+            : "text-gray-600 hover:text-black hover:bg-gray-50"
+            }`}
         >
-          <span className="capitalize">{item.label}</span>
+          <span className="capitalize">{t(item.label)}</span>
         </Link>
       )}
 
@@ -100,11 +99,10 @@ const MobileHeaderLink = ({ item, onNavigate }) => {
               <button
                 key={index}
                 onClick={(e) => handleSubmenuClick(e, subItem)}
-                className={`block w-full text-left py-3 px-4 rounded-lg text-base transition-colors duration-200 ${
-                  isSubItemActive
-                    ? "bg-primary text-white"
-                    : "text-black hover:bg-primary hover:text-white"
-                }`}
+                className={`block w-full text-left py-3 px-4 rounded-lg text-base transition-colors duration-200 ${isSubItemActive
+                  ? "bg-primary text-white"
+                  : "text-black hover:bg-primary hover:text-white"
+                  }`}
               >
                 {subItem.label}
               </button>
@@ -113,11 +111,10 @@ const MobileHeaderLink = ({ item, onNavigate }) => {
                 key={index}
                 to={subItem.href}
                 onClick={(e) => handleSubmenuClick(e, subItem)}
-                className={`block py-3 px-4 rounded-lg text-base transition-colors duration-200 ${
-                  isSubItemActive
-                    ? "bg-primary text-white"
-                    : "text-black hover:bg-primary hover:text-white"
-                }`}
+                className={`block py-3 px-4 rounded-lg text-base transition-colors duration-200 ${isSubItemActive
+                  ? "bg-primary text-white"
+                  : "text-black hover:bg-primary hover:text-white"
+                  }`}
               >
                 {subItem.label}
               </Link>

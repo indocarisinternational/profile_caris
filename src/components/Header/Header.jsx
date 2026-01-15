@@ -4,6 +4,7 @@ import { headerData } from "../Routes/index";
 import HeaderLink from "./HeaderLink";
 import MobileHeaderLink from "./MobileHeaderLink";
 import { Icon } from "@iconify/react";
+import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
 
 const Header = () => {
   const [sticky, setSticky] = useState(false);
@@ -79,11 +80,10 @@ const Header = () => {
   return (
     <>
       <header
-        className={`fixed top-0 z-40 w-full transition-all duration-300 bg-white border-b ${
-          sticky
+        className={`fixed top-0 z-40 w-full transition-all duration-300 bg-white border-b ${sticky
             ? "shadow-lg py-2 sm:py-3 lg:py-4"
             : "shadow-none py-3 sm:py-4 lg:py-6"
-        } ${visible ? "translate-y-0" : "-translate-y-full"}`}
+          } ${visible ? "translate-y-0" : "-translate-y-full"}`}
       >
         <div className="container mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
@@ -91,8 +91,8 @@ const Header = () => {
               <Logo />
             </div>
 
-            <nav 
-              id="navigation" 
+            <nav
+              id="navigation"
               className="hidden lg:flex items-center gap-6 xl:gap-8 justify-center flex-1"
               aria-label="Main navigation"
             >
@@ -101,7 +101,8 @@ const Header = () => {
               ))}
             </nav>
 
-            <div className="hidden lg:flex justify-end flex-shrink-0">
+            <div className="hidden lg:flex items-center gap-4 justify-end flex-shrink-0">
+              <LanguageSwitcher />
               <span className="text-sm xl:text-lg font-semibold text-gray-800 whitespace-nowrap">
                 Indo Caris International
               </span>
@@ -117,19 +118,16 @@ const Header = () => {
             >
               <div className="w-6 h-6 flex flex-col justify-center items-center">
                 <span
-                  className={`block w-6 h-0.5 bg-black transition-all duration-300 ${
-                    navbarOpen ? "rotate-45 translate-y-0.5" : ""
-                  }`}
+                  className={`block w-6 h-0.5 bg-black transition-all duration-300 ${navbarOpen ? "rotate-45 translate-y-0.5" : ""
+                    }`}
                 ></span>
                 <span
-                  className={`block w-6 h-0.5 bg-black mt-1.5 transition-all duration-300 ${
-                    navbarOpen ? "opacity-0" : ""
-                  }`}
+                  className={`block w-6 h-0.5 bg-black mt-1.5 transition-all duration-300 ${navbarOpen ? "opacity-0" : ""
+                    }`}
                 ></span>
                 <span
-                  className={`block w-6 h-0.5 bg-black mt-1.5 transition-all duration-300 ${
-                    navbarOpen ? "-rotate-45 -translate-y-2" : ""
-                  }`}
+                  className={`block w-6 h-0.5 bg-black mt-1.5 transition-all duration-300 ${navbarOpen ? "-rotate-45 -translate-y-2" : ""
+                    }`}
                 ></span>
               </div>
             </button>
@@ -139,18 +137,16 @@ const Header = () => {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`lg:hidden fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 ${
-          navbarOpen ? "opacity-100 visible" : "opacity-0 invisible"
-        }`}
+        className={`lg:hidden fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 ${navbarOpen ? "opacity-100 visible" : "opacity-0 invisible"
+          }`}
         onClick={() => setNavbarOpen(false)}
       />
 
       {/* Mobile Menu */}
       <div
         ref={mobileMenuRef}
-        className={`lg:hidden fixed top-0 right-0 h-screen w-full max-w-sm bg-white shadow-2xl transform transition-transform duration-300 ease-in-out z-50 ${
-          navbarOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+        className={`lg:hidden fixed top-0 right-0 h-screen w-full max-w-sm bg-white shadow-2xl transform transition-transform duration-300 ease-in-out z-50 ${navbarOpen ? "translate-x-0" : "translate-x-full"
+          }`}
       >
         <div className="h-full flex flex-col">
           {/* Header */}
