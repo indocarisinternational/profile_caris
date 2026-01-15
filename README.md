@@ -110,8 +110,8 @@ manualChunks: {
   "@type": "Organization",
   "name": "Indo Caris International",
   "description": "Leading IT consultant in Jakarta...",
-  "url": "https://caris.web.id",
-  "logo": "https://caris.web.id/logo.png"
+  "url": "https://carisinternational.com",
+  "logo": "https://carisinternational.com/logo.png"
 }
 ```
 
@@ -240,7 +240,7 @@ Run `npm run build` to generate bundle analysis report at `dist/stats.html`
 ## 📞 Contact Information
 
 **Indo Caris International**
-- Website: https://caris.web.id
+- Website: https://carisinternational.com
 - Email: info@carisinternational.com
 - Location: Jakarta, Indonesia
 

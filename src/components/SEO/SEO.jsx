@@ -5,7 +5,7 @@ const SEO = ({
   description = "Leading IT consultant in Jakarta providing scalable digital solutions, software development, and innovative technology services for businesses across Indonesia.",
   keywords = "IT Consultant Jakarta, Jasa IT Support, Digital Solutions Indonesia, Software Development Jakarta, Technology Consultant Indonesia",
   image = "/og-image.jpg",
-  url = "https://caris.web.id",
+  url = "https://carisinternational.com",
   type = "website",
   author = "Indo Caris International",
   siteName = "Indo Caris International",
@@ -13,8 +13,8 @@ const SEO = ({
   alternateLocale = "en_US"
 }) => {
   const fullTitle = title.includes("Indo Caris International") ? title : `${title} | Indo Caris International`;
-  const canonicalUrl = url.startsWith('http') ? url : `https://caris.web.id${url}`;
-  const imageUrl = image.startsWith('http') ? image : `https://caris.web.id${image}`;
+  const canonicalUrl = url.startsWith('http') ? url : `https://carisinternational.com${url}`;
+  const imageUrl = image.startsWith('http') ? image : `https://carisinternational.com${image}`;
 
   return (
     <Helmet>

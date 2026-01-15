@@ -76,7 +76,7 @@ const Footer: React.FC = () => {
             </div>
             <div className="flex items-center gap-3">
               <Icon icon="tabler:mail" className="text-primary text-2xl" />
-              <p className="text-black/70">admin@caris.web.id</p>
+              <p className="text-black/70">admin@carisinternational.com</p>
             </div>
           </div>
         </div>

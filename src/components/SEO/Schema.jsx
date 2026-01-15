@@ -6,8 +6,8 @@ const Schema = ({ type = "organization", data = {} }) => {
     "@type": "Organization",
     "name": "Indo Caris International",
     "alternateName": "Caris International",
-    "url": "https://caris.web.id",
-    "logo": "https://caris.web.id/logo.png",
+    "url": "https://carisinternational.com",
+    "logo": "https://carisinternational.com/logo.png",
     "description": "Leading IT consultant in Jakarta providing scalable digital solutions, software development, and innovative technology services for businesses across Indonesia.",
     "foundingDate": "2019",
     "address": {
@@ -65,11 +65,11 @@ const Schema = ({ type = "organization", data = {} }) => {
   const getLocalBusinessSchema = () => ({
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": "https://caris.web.id/#localbusiness",
+    "@id": "https://carisinternational.com/#localbusiness",
     "name": "Indo Caris International",
-    "image": "https://caris.web.id/logo.png",
+    "image": "https://carisinternational.com/logo.png",
     "description": "Professional IT consulting and digital solutions provider in Jakarta, Indonesia. Specializing in software development, digital transformation, and technology consulting services.",
-    "url": "https://caris.web.id",
+    "url": "https://carisinternational.com",
     "telephone": "+62-21-1234-5678",
     "priceRange": "$$",
     "address": {
@@ -129,7 +129,7 @@ const Schema = ({ type = "organization", data = {} }) => {
     "provider": {
       "@type": "Organization",
       "name": "Indo Caris International",
-      "url": "https://caris.web.id"
+      "url": "https://carisinternational.com"
     },
     "areaServed": {
       "@type": "Country",
@@ -176,9 +176,9 @@ const Schema = ({ type = "organization", data = {} }) => {
     "worksFor": {
       "@type": "Organization",
       "name": "Indo Caris International",
-      "url": "https://caris.web.id"
+      "url": "https://carisinternational.com"
     },
-    "url": person.url || `https://caris.web.id/${person.slug}`,
+    "url": person.url || `https://carisinternational.com/${person.slug}`,
     "image": person.image,
     "description": person.description,
     "sameAs": person.socialLinks || [],
