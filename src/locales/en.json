@@ -1,0 +1,128 @@
+{
+    "nav": {
+        "home": "Home",
+        "project": "Project",
+        "teams": "Teams",
+        "testimonial": "Testimonial",
+        "about": "About",
+        "services": "Services",
+        "contact": "Contact"
+    },
+    "hero": {
+        "badge": "Indo Caris International",
+        "title": "Leading IT Consultant in",
+        "titleHighlight": "Jakarta",
+        "subtitle": "Creating Scalable",
+        "subtitleHighlight": "Digital Solutions",
+        "description": "Transform your business with Indo Caris International's expert IT consulting services. We deliver innovative software development, digital transformation strategies, and comprehensive technology solutions for companies across Jakarta and Indonesia.",
+        "feature1": "Software Development & Innovation",
+        "feature2": "Digital Transformation Consulting",
+        "feature3": "IT Support & Technology Solutions",
+        "cta_start": "Get Started",
+        "cta_learn": "Learn More",
+        "stats_projects": "Projects Completed",
+        "stats_clients": "Happy Clients",
+        "stats_experience": "Years Experience"
+    },
+    "companies": {
+        "title": "Trusted by Innovators Everywhere"
+    },
+    "projects": {
+        "title": "Our Projects.",
+        "explore": "Explore projects",
+        "load_more": "Load more",
+        "status_done": "completed",
+        "status_process": "in progress"
+    },
+    "teams": {
+        "title": "Meet with our",
+        "subtitle": "Teams."
+    },
+    "testimonials": {
+        "badge": "Client Testimonials",
+        "title": "What Our",
+        "title_highlight": "Clients Say",
+        "description": "Don't just take our word for it. Here's what our clients have to say about working with us."
+    },
+    "footer": {
+        "links": "Links",
+        "other": "Other",
+        "about_us": "About Us",
+        "our_team": "Our Team",
+        "career": "Career",
+        "services": "Services",
+        "contact": "Contact",
+        "location": "Bandung, Indonesia",
+        "copyright": "© 2024 Company. All Rights Reserved by",
+        "privacy": "Privacy Policy",
+        "terms": "Terms & Conditions"
+    },
+    "detail": {
+        "back": "Back to Team",
+        "get_in_touch": "Get In Touch",
+        "download_cv": "Download CV",
+        "specialization": "Specialization",
+        "achievements": "Achievements",
+        "additional_info": "Additional Information",
+        "work_experience": "Work Experience",
+        "education": "Education",
+        "address": "Address",
+        "joined": "Joined",
+        "employee_not_found": "Employee Not Found",
+        "employee_not_found_desc": "The employee you're looking for doesn't exist.",
+        "loading": "Loading employee detail..."
+    },
+    "about": {
+        "title": "About Us",
+        "subtitle": "Indo Caris International",
+        "description": "We are a leading IT consulting company based in Indonesia, providing innovative digital solutions for businesses of all sizes.",
+        "mission_title": "Our Mission",
+        "mission_text": "To empower businesses with cutting-edge technology solutions that drive growth and innovation.",
+        "vision_title": "Our Vision",
+        "vision_text": "To be the preferred technology partner for enterprises across Indonesia and Southeast Asia.",
+        "values_title": "Our Values",
+        "value1_title": "Innovation",
+        "value1_text": "We constantly explore new technologies and methodologies.",
+        "value2_title": "Excellence",
+        "value2_text": "We are committed to delivering the highest quality.",
+        "value3_title": "Integrity",
+        "value3_text": "We act with honesty and transparency.",
+        "value4_title": "Collaboration",
+        "value4_text": "We work together with clients as partners."
+    },
+    "services": {
+        "title": "Our Services",
+        "subtitle": "Comprehensive Solutions for Your Digital Transformation",
+        "service1_title": "Software Development",
+        "service1_desc": "Custom software solutions tailored to your business needs, from web applications to enterprise systems.",
+        "service2_title": "IT Consulting",
+        "service2_desc": "Strategic guidance to help you leverage technology for business growth and efficiency.",
+        "service3_title": "Digital Transformation",
+        "service3_desc": "End-to-end modernization of your business operations with cutting-edge digital solutions.",
+        "service4_title": "Mobile Development",
+        "service4_desc": "Native and cross-platform mobile applications for iOS and Android.",
+        "service5_title": "Cloud Solutions",
+        "service5_desc": "Cloud migration, architecture, and managed services for scalability and security.",
+        "service6_title": "IT Support",
+        "service6_desc": "Ongoing technical support and maintenance to keep your systems running smoothly."
+    },
+    "contact": {
+        "title": "Contact Us",
+        "subtitle": "Ready to Get Started?",
+        "description": "Reach out to us to discuss how we can help transform your business.",
+        "name": "Name",
+        "email": "Email",
+        "phone": "Phone",
+        "message": "Message",
+        "send": "Send Message",
+        "info_title": "Contact Information",
+        "address": "Bandung, Indonesia",
+        "email_address": "admin@carisinternational.com",
+        "phone_number": "+62 8139 3139 307"
+    },
+    "language": {
+        "switch": "Switch Language",
+        "id": "Indonesia",
+        "en": "English"
+    }
+}

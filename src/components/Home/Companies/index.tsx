@@ -56,7 +56,7 @@ const Companies = () => {
         <h2 className="text-midnight_text text-2xl font-semibold">
           Trusted by companies of all sizes
         </h2>
-        <div className="py-14 border-b ">
+        <div className="py-14 border-b border-gray-700 ">
           <Slider {...settings}>
             {TruestedCompanies.map((item, i) => (
               <div key={i}>

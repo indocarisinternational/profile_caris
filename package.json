@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "e-learning_project",
   "version": "2.0.0",
   "private": true,
@@ -41,3 +42,48 @@
     "typescript": "^5"
   }
 }
+=======
+  "name": "profile-caris",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@iconify/react": "^6.0.1",
+    "@supabase/supabase-js": "^2.57.4",
+    "@tailwindcss/vite": "^4.1.13",
+    "i18next": "^23.11.5",
+    "install": "^0.13.0",
+    "lucide-react": "^0.544.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-helmet-async": "^2.0.5",
+    "react-hot-toast": "^2.6.0",
+    "react-i18next": "^14.1.2",
+    "react-qr-code": "^2.0.18",
+    "react-router-dom": "^7.9.1",
+    "react-router-hash-link": "^2.4.3",
+    "react-slick": "^0.31.0",
+    "slick-carousel": "^1.8.1",
+    "tailwindcss": "^4.1.13"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.33.0",
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.7",
+    "@vitejs/plugin-react": "^5.0.0",
+    "eslint": "^9.33.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "^16.3.0",
+    "rollup-plugin-visualizer": "^6.0.3",
+    "terser": "^5.44.0",
+    "vite": "^7.3.1"
+  }
+}
+>>>>>>> 7d94635f20ae30b8e55561066302e7497e38d9d0

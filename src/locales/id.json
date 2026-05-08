@@ -1,0 +1,128 @@
+{
+    "nav": {
+        "home": "Beranda",
+        "project": "Proyek",
+        "teams": "Tim",
+        "testimonial": "Testimoni",
+        "about": "Tentang",
+        "services": "Layanan",
+        "contact": "Kontak"
+    },
+    "hero": {
+        "badge": "Indo Caris International",
+        "title": "Konsultan IT Terkemuka di",
+        "titleHighlight": "Jakarta",
+        "subtitle": "Menciptakan Solusi Digital yang",
+        "subtitleHighlight": "Skalabel",
+        "description": "Transformasi bisnis Anda dengan layanan konsultasi IT dari Indo Caris International. Kami menyediakan pengembangan perangkat lunak inovatif, strategi transformasi digital, dan solusi teknologi komprehensif untuk perusahaan di Jakarta dan seluruh Indonesia.",
+        "feature1": "Pengembangan Perangkat Lunak & Inovasi",
+        "feature2": "Konsultasi Transformasi Digital",
+        "feature3": "Dukungan IT & Solusi Teknologi",
+        "cta_start": "Mulai Sekarang",
+        "cta_learn": "Pelajari Lebih Lanjut",
+        "stats_projects": "Proyek Selesai",
+        "stats_clients": "Klien Puas",
+        "stats_experience": "Tahun Pengalaman"
+    },
+    "companies": {
+        "title": "Dipercaya oleh Inovator di Mana Saja"
+    },
+    "projects": {
+        "title": "Proyek Kami.",
+        "explore": "Jelajahi proyek",
+        "load_more": "Lihat lainnya",
+        "status_done": "selesai",
+        "status_process": "proses"
+    },
+    "teams": {
+        "title": "Kenali Tim",
+        "subtitle": "Kami."
+    },
+    "testimonials": {
+        "badge": "Testimoni Klien",
+        "title": "Apa Kata",
+        "title_highlight": "Klien Kami",
+        "description": "Jangan hanya percaya kata kami. Berikut apa yang klien kami katakan tentang bekerja sama dengan kami."
+    },
+    "footer": {
+        "links": "Tautan",
+        "other": "Lainnya",
+        "about_us": "Tentang Kami",
+        "our_team": "Tim Kami",
+        "career": "Karir",
+        "services": "Layanan",
+        "contact": "Kontak",
+        "location": "Bandung, Indonesia",
+        "copyright": "© 2024 Company. Hak Cipta Dilindungi oleh",
+        "privacy": "Kebijakan Privasi",
+        "terms": "Syarat & Ketentuan"
+    },
+    "detail": {
+        "back": "Kembali ke Tim",
+        "get_in_touch": "Hubungi Kami",
+        "download_cv": "Unduh CV",
+        "specialization": "Spesialisasi",
+        "achievements": "Pencapaian",
+        "additional_info": "Informasi Tambahan",
+        "work_experience": "Pengalaman Kerja",
+        "education": "Pendidikan",
+        "address": "Alamat",
+        "joined": "Bergabung",
+        "employee_not_found": "Karyawan Tidak Ditemukan",
+        "employee_not_found_desc": "Karyawan yang Anda cari tidak ada.",
+        "loading": "Memuat detail karyawan..."
+    },
+    "about": {
+        "title": "Tentang Kami",
+        "subtitle": "Indo Caris International",
+        "description": "Kami adalah perusahaan konsultan IT terkemuka yang berbasis di Indonesia, menyediakan solusi digital inovatif untuk bisnis dari semua ukuran.",
+        "mission_title": "Misi Kami",
+        "mission_text": "Memberdayakan bisnis dengan solusi teknologi mutakhir yang mendorong pertumbuhan dan inovasi.",
+        "vision_title": "Visi Kami",
+        "vision_text": "Menjadi mitra teknologi pilihan untuk perusahaan di seluruh Indonesia dan Asia Tenggara.",
+        "values_title": "Nilai-Nilai Kami",
+        "value1_title": "Inovasi",
+        "value1_text": "Kami terus mengeksplorasi teknologi dan metodologi baru.",
+        "value2_title": "Keunggulan",
+        "value2_text": "Kami berkomitmen untuk memberikan kualitas tertinggi.",
+        "value3_title": "Integritas",
+        "value3_text": "Kami bertindak dengan kejujuran dan transparansi.",
+        "value4_title": "Kolaborasi",
+        "value4_text": "Kami bekerja sama dengan klien sebagai mitra."
+    },
+    "services": {
+        "title": "Layanan Kami",
+        "subtitle": "Solusi Komprehensif untuk Transformasi Digital Anda",
+        "service1_title": "Pengembangan Perangkat Lunak",
+        "service1_desc": "Solusi perangkat lunak kustom yang dirancang untuk kebutuhan bisnis Anda, mulai dari aplikasi web hingga sistem enterprise.",
+        "service2_title": "Konsultasi IT",
+        "service2_desc": "Panduan strategis untuk membantu Anda memanfaatkan teknologi untuk pertumbuhan dan efisiensi bisnis.",
+        "service3_title": "Transformasi Digital",
+        "service3_desc": "Modernisasi operasi bisnis Anda end-to-end dengan solusi digital terkini.",
+        "service4_title": "Pengembangan Mobile",
+        "service4_desc": "Aplikasi mobile native dan cross-platform untuk iOS dan Android.",
+        "service5_title": "Cloud Solutions",
+        "service5_desc": "Migrasi cloud, arsitektur, dan layanan terkelola untuk skalabilitas dan keamanan.",
+        "service6_title": "Dukungan IT",
+        "service6_desc": "Dukungan teknis dan pemeliharaan berkelanjutan untuk menjaga sistem Anda berjalan lancar."
+    },
+    "contact": {
+        "title": "Hubungi Kami",
+        "subtitle": "Siap Untuk Memulai?",
+        "description": "Hubungi kami untuk mendiskusikan bagaimana kami dapat membantu transformasi bisnis Anda.",
+        "name": "Nama",
+        "email": "Email",
+        "phone": "Telepon",
+        "message": "Pesan",
+        "send": "Kirim Pesan",
+        "info_title": "Informasi Kontak",
+        "address": "Bandung, Indonesia",
+        "email_address": "admin@carisinternational.com",
+        "phone_number": "+62 8139 3139 307"
+    },
+    "language": {
+        "switch": "Ganti Bahasa",
+        "id": "Indonesia",
+        "en": "English"
+    }
+}
