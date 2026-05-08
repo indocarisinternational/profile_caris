@@ -22,44 +22,46 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="bg-sky-200 py-12">
+    <footer className="bg-black py-20 border-t border-white/10">
       <div className="container mx-auto px-4 max-w-screen-xl">
-        {/* Grid Utama */}
-        <div className="grid grid-cols-1 gap-y-10 gap-x-8 sm:grid-cols-2 lg:grid-cols-12">
-          {/* Logo & Sosmed */}
-          <div className="col-span-12 lg:col-span-4 space-y-6">
+        <div className="grid grid-cols-1 gap-y-16 gap-x-8 lg:grid-cols-12">
+          {/* Logo & Info */}
+          <div className="col-span-12 lg:col-span-4 space-y-8">
             <Logo />
-            <div className="flex items-center gap-5">
+            <p className="text-gray-500 text-sm leading-relaxed max-w-xs">
+              Indo Caris International is a leading IT consulting firm providing high-end software development and digital transformation solutions.
+            </p>
+            <div className="flex items-center gap-6">
               <a
                 href="https://www.linkedin.com/company/indo-caris-international"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-primary text-black text-2xl transition-colors duration-200"
+                className="text-white/40 hover:text-white transition-colors"
                 aria-label="LinkedIn"
               >
-                <Icon icon="tabler:brand-linkedin" />
+                <Icon icon="tabler:brand-linkedin" fontSize={24} />
               </a>
               <a
                 href="https://www.instagram.com/carisinternational"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-primary text-black text-2xl transition-colors duration-200"
+                className="text-white/40 hover:text-white transition-colors"
                 aria-label="Instagram"
               >
-                <Icon icon="tabler:brand-instagram" />
+                <Icon icon="tabler:brand-instagram" fontSize={24} />
               </a>
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Links */}
           <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-            <h3 className="mb-4 text-lg font-semibold text-black">{t("footer.links")}</h3>
-            <ul className="space-y-2">
+            <h3 className="mb-6 text-sm font-bold uppercase tracking-widest text-white">{t("footer.links")}</h3>
+            <ul className="space-y-4">
               {quickLinks.map((item, index) => (
                 <li key={index}>
                   <a
                     href={item.href}
-                    className="text-black/60 hover:text-primary transition-colors"
+                    className="text-gray-500 hover:text-white text-sm transition-colors"
                   >
                     {item.label}
                   </a>
@@ -68,15 +70,14 @@ const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Other */}
           <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-            <h3 className="mb-4 text-lg font-semibold text-black">{t("footer.other")}</h3>
-            <ul className="space-y-2">
+            <h3 className="mb-6 text-sm font-bold uppercase tracking-widest text-white">{t("footer.other")}</h3>
+            <ul className="space-y-4">
               {otherLinks.map((item, index) => (
                 <li key={index}>
                   <Link
                     to={item.href}
-                    className="text-black/60 hover:text-primary transition-colors"
+                    className="text-gray-500 hover:text-white text-sm transition-colors"
                   >
                     {item.label}
                   </Link>
@@ -85,47 +86,34 @@ const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Kontak */}
+          {/* Contact */}
           <div className="col-span-12 lg:col-span-4 space-y-6">
-            <div className="flex items-center gap-3">
-              <Icon
-                icon="tabler:brand-google-maps"
-                className="text-primary text-2xl"
-              />
-              <p className="text-black/70">{t("footer.location")}</p>
-            </div>
-            <div className="flex items-center gap-3">
-              <Icon icon="tabler:phone" className="text-primary text-2xl" />
-              <p className="text-black/70">+62 8139 3139 307</p>
-            </div>
-            <div className="flex items-center gap-3">
-              <Icon icon="tabler:mail" className="text-primary text-2xl" />
-              <p className="text-black/70">admin@carisinternational.com</p>
+            <h3 className="mb-6 text-sm font-bold uppercase tracking-widest text-white">Contact</h3>
+            <div className="space-y-4">
+              <div className="flex items-start gap-4">
+                <Icon icon="tabler:map-pin" className="text-white/40 mt-1" />
+                <p className="text-gray-500 text-sm leading-relaxed">{t("footer.location")}</p>
+              </div>
+              <div className="flex items-center gap-4">
+                <Icon icon="tabler:phone" className="text-white/40" />
+                <p className="text-gray-500 text-sm">+62 8139 3139 307</p>
+              </div>
+              <div className="flex items-center gap-4">
+                <Icon icon="tabler:mail" className="text-white/40" />
+                <p className="text-gray-500 text-sm">admin@carisinternational.com</p>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Bawah */}
-        <div className="mt-10 border-t border-black/10 pt-6 flex flex-col lg:flex-row items-center justify-between gap-4">
-          <p className="text-black/60 text-sm text-center lg:text-left">
-            {t("footer.copyright")}{" "}
-            <a href="/" className="hover:text-primary font-medium">
-              Indo Caris International
-            </a>
+        {/* Bottom */}
+        <div className="mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6">
+          <p className="text-gray-600 text-xs">
+            © {new Date().getFullYear()} Indo Caris International. All rights reserved.
           </p>
-          <div className="flex gap-6">
-            <Link
-              to="/about"
-              className="text-black/60 text-sm hover:text-primary transition-colors"
-            >
-              {t("footer.privacy")}
-            </Link>
-            <Link
-              to="/about"
-              className="text-black/60 text-sm hover:text-primary transition-colors"
-            >
-              {t("footer.terms")}
-            </Link>
+          <div className="flex gap-8">
+            <Link to="/about" className="text-gray-600 hover:text-white text-xs transition-colors">Privacy Policy</Link>
+            <Link to="/about" className="text-gray-600 hover:text-white text-xs transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>
@@ -134,4 +122,3 @@ const Footer: React.FC = () => {
 };
 
 export default Footer;
-

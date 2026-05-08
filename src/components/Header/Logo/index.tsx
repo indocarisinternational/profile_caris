@@ -10,13 +10,10 @@ const Logo: React.FC = () => {
         height={130}
         className="w-10 h-auto"
       />
-      {/* <div className="flex flex-col leading-tight">
-        <span className="text-lg font-semibold text-gray-800">Indo</span>
-        <span className="text-lg font-semibold text-gray-800">Caris</span>
-        <span className="text-lg font-semibold text-gray-800">
-          International
-        </span>
-      </div> */}
+      <div className="flex flex-col leading-none">
+        <span className="text-xl font-black text-white tracking-tighter italic">CARIS</span>
+        <span className="text-[8px] font-bold text-white/50 tracking-[0.3em] -mt-0.5">INTERNATIONAL</span>
+      </div>
     </Link>
   );
 };

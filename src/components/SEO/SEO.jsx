@@ -66,8 +66,8 @@ const SEO = ({
       <link rel="manifest" href="/site.webmanifest" />
       
       {/* Theme Color */}
-      <meta name="theme-color" content="#1f2937" />
-      <meta name="msapplication-TileColor" content="#1f2937" />
+      <meta name="theme-color" content="#000000" />
+      <meta name="msapplication-TileColor" content="#000000" />
     </Helmet>
   );
 };

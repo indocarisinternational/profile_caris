@@ -1,181 +1,113 @@
 import { Icon } from "@iconify/react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Hero = () => {
   const { t } = useTranslation();
+
   return (
-    <section id="home-section" style={{ backgroundColor: "#f6faff" }}>
-      <div className="container mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 lg:pt-32 pb-16 sm:pb-20 lg:pb-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center">
-          {/* Content Section - Left */}
-          <div className="order-2 lg:order-1 space-y-6 sm:space-y-8 text-center lg:text-left">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-white/70 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm">
-              <Icon
-                icon="solar:verified-check-bold"
-                className="text-success text-lg sm:text-xl"
-              />
-              <p className="text-success text-sm sm:text-base font-semibold">
-                Indo Caris International
-              </p>
-            </div>
+    <section 
+      id="home-section" 
+      className="relative min-h-screen flex items-center justify-center pt-32 pb-20 overflow-hidden bg-black"
+    >
+      {/* Grid Background */}
+      <div className="absolute inset-0 grid-background opacity-20 pointer-events-none" />
+      
+      {/* Radial Gradient Glow */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-white/10 blur-[120px] rounded-full pointer-events-none" />
 
-            {/* Main Heading */}
-            <div className="space-y-4 sm:space-y-6">
-              <h1 className="text-midnight_text text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
-                {t("hero.title")} <span className="text-primary">{t("hero.titleHighlight")}</span> - {t("hero.subtitle")}{" "}
-                <span className="text-primary">{t("hero.subtitleHighlight")}</span>
-              </h1>
+      <div className="container mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="flex flex-col items-center text-center space-y-12">
+          
+          {/* Badge */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-md"
+          >
+            <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+            <span className="text-xs font-medium tracking-wider uppercase text-white/70">
+              Transforming Ideas into Digital Reality
+            </span>
+          </motion.div>
 
-              <p className="text-black/70 text-base sm:text-lg lg:text-xl leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                {t("hero.description")}
-              </p>
-            </div>
+          {/* Main Heading */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="space-y-6 max-w-4xl"
+          >
+            <h1 className="text-4xl sm:text-6xl lg:text-8xl font-extrabold tracking-tight leading-[1.1] text-gradient">
+              Consulting. <br />
+              Engineering. <br />
+              <span className="text-white">Innovation.</span>
+            </h1>
 
-            {/* Features */}
-            <div className="pt-4 sm:pt-6 lg:pt-8">
-              {/* Mobile - Stacked Layout */}
-              <div className="flex flex-col sm:hidden space-y-4">
-                <div className="flex items-center gap-3 justify-center lg:justify-start">
-                  <div className="flex-shrink-0">
-                    <Icon
-                      icon="solar:check-circle-bold"
-                      className="text-success text-2xl"
-                    />
-                  </div>
-                  <p className="text-base font-medium text-black">
-                    Software Development & Innovation
-                  </p>
-                </div>
-                <div className="flex items-center gap-3 justify-center lg:justify-start">
-                  <div className="flex-shrink-0">
-                    <Icon
-                      icon="solar:check-circle-bold"
-                      className="text-success text-2xl"
-                    />
-                  </div>
-                  <p className="text-base font-medium text-black">
-                    Digital Transformation Consulting
-                  </p>
-                </div>
-                <div className="flex items-center gap-3 justify-center lg:justify-start">
-                  <div className="flex-shrink-0">
-                    <Icon
-                      icon="solar:check-circle-bold"
-                      className="text-success text-2xl"
-                    />
-                  </div>
-                  <p className="text-base font-medium text-black">
-                    IT Support & Technology Solutions
-                  </p>
-                </div>
-              </div>
+            <p className="text-gray-400 text-lg sm:text-xl lg:text-2xl max-w-2xl mx-auto leading-relaxed">
+              We provide expert IT consulting and high-end software development to help modern businesses scale in the digital age.
+            </p>
+          </motion.div>
 
-              {/* Tablet & Desktop - Grid Layout */}
-              <div className="hidden sm:grid grid-cols-1 md:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3 gap-4 lg:gap-6">
-                <div className="flex items-center gap-3 justify-center lg:justify-start">
-                  <div className="flex-shrink-0">
-                    <Icon
-                      icon="solar:check-circle-bold"
-                      className="text-success text-xl lg:text-2xl"
-                    />
-                  </div>
-                  <p className="text-sm lg:text-base xl:text-lg font-medium text-black">
-                    Software Development & Innovation
-                  </p>
-                </div>
-                <div className="flex items-center gap-3 justify-center lg:justify-start">
-                  <div className="flex-shrink-0">
-                    <Icon
-                      icon="solar:check-circle-bold"
-                      className="text-success text-xl lg:text-2xl"
-                    />
-                  </div>
-                  <p className="text-sm lg:text-base xl:text-lg font-medium text-black">
-                    Digital Transformation Consulting
-                  </p>
-                </div>
-                <div className="flex items-center gap-3 justify-center lg:justify-start">
-                  <div className="flex-shrink-0">
-                    <Icon
-                      icon="solar:check-circle-bold"
-                      className="text-success text-xl lg:text-2xl"
-                    />
-                  </div>
-                  <p className="text-sm lg:text-base xl:text-lg font-medium text-black">
-                    IT Support & Technology Solutions
-                  </p>
-                </div>
-              </div>
-            </div>
+          {/* CTA Buttons */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="flex flex-col sm:flex-row gap-4"
+          >
+            <Link
+              to="/contact"
+              className="bg-white text-black px-10 py-4 rounded-full font-bold transition-all hover:bg-white/90 hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.2)]"
+            >
+              Start Your Project
+            </Link>
+            <Link
+              to="/services"
+              className="px-10 py-4 rounded-full font-bold border border-white/10 bg-white/5 backdrop-blur-sm transition-all hover:bg-white/10 hover:border-white/20 active:scale-95"
+            >
+              Our Services
+            </Link>
+          </motion.div>
 
-            {/* CTA Buttons */}
-            <div className="pt-6 sm:pt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Link
-                to="/contact"
-                className="bg-primary hover:bg-primary/90 text-black px-8 py-3 rounded-lg font-semibold transition-colors duration-200 shadow-lg hover:shadow-xl text-center"
-              >
-                {t("hero.cta_start")}
-              </Link>
-              <Link
-                to="/services"
-                className="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-3 rounded-lg font-semibold transition-all duration-200 text-center"
-              >
-                {t("hero.cta_learn")}
-              </Link>
+          {/* Partners / Trusted By (Minimalist) */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.4 }}
+            className="pt-20 space-y-8 w-full"
+          >
+            <p className="text-xs font-semibold tracking-[0.2em] uppercase text-white/30">
+              Trusted by industry leaders
+            </p>
+            <div className="flex flex-wrap justify-center items-center gap-12 sm:gap-20 opacity-30 grayscale invert">
+              {/* Replace with actual partner logos or minimalist icons */}
+              <Icon icon="logos:google" width="100" />
+              <Icon icon="logos:microsoft" width="100" />
+              <Icon icon="logos:amazon-aws" width="60" />
+              <Icon icon="logos:meta" width="100" />
             </div>
-          </div>
-
-          {/* Image Section - Right */}
-          <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-lg lg:max-w-none">
-              <img
-                src="/banner.png"
-                alt="Indo Caris International IT Consultant Jakarta - Professional team providing digital solutions and software development services"
-                className="w-full h-auto rounded-2xl sm:rounded-3xl lg:rounded-[48px] border border-gray-200 shadow-2xl transform hover:scale-105 transition-transform duration-300"
-                style={{
-                  aspectRatio: "1/1",
-                  objectFit: "cover",
-                }}
-              />
-              {/* Decorative Elements */}
-              <div className="absolute -top-4 -right-4 w-8 h-8 bg-primary rounded-full opacity-20 animate-pulse hidden sm:block"></div>
-              <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-success rounded-full opacity-30 animate-pulse hidden sm:block"></div>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Stats */}
-        <div className="mt-16 sm:mt-20 lg:mt-24 pt-8 border-t border-gray-200/50">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
-            <div className="space-y-2">
-              <h3 className="text-2xl sm:text-3xl font-bold text-primary">
-                10+
-              </h3>
-              <p className="text-gray-600 text-sm sm:text-base">
-                {t("hero.stats_projects")}
-              </p>
-            </div>
-            <div className="space-y-2">
-              <h3 className="text-2xl sm:text-3xl font-bold text-primary">
-                5+
-              </h3>
-              <p className="text-gray-600 text-sm sm:text-base">
-                {t("hero.stats_clients")}
-              </p>
-            </div>
-            <div className="space-y-2">
-              <h3 className="text-2xl sm:text-3xl font-bold text-primary">
-                2+
-              </h3>
-              <p className="text-gray-600 text-sm sm:text-base">
-                {t("hero.stats_experience")}
-              </p>
-            </div>
-          </div>
+          </motion.div>
         </div>
       </div>
+      
+      {/* Scroll Indicator */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2"
+      >
+        <div className="w-6 h-10 rounded-full border-2 border-white/10 flex justify-center p-1">
+          <motion.div 
+            animate={{ y: [0, 12, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+            className="w-1 h-2 rounded-full bg-white/30"
+          />
+        </div>
+      </motion.div>
     </section>
   );
 };

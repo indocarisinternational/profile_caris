@@ -1,123 +1,107 @@
 import { useTranslation } from "react-i18next";
 import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import SEO from "../SEO/SEO";
 import Schema from "../SEO/Schema";
 
 const About = () => {
-    const { t } = useTranslation();
+  const { t } = useTranslation();
 
-    return (
-        <>
-            <SEO
-                title={`${t("about.title")} | Indo Caris International`}
-                description={t("about.description")}
-                keywords="About Indo Caris International, IT Consultant Jakarta, Digital Solutions Indonesia, Company Profile"
-                url="/about"
-            />
-            <Schema type="organization" />
+  return (
+    <>
+      <SEO
+        title={`About | Indo Caris International`}
+        description="Learn more about Indo Caris International, our mission, vision, and values in the IT industry."
+        keywords="About Indo Caris International, IT Consultant Jakarta, Digital Solutions Indonesia, Company Profile"
+        url="/about"
+      />
+      <Schema type="organization" />
 
-            <section className="pt-32 pb-20 bg-gradient-to-br from-blue-50 to-white">
-                <div className="container mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-                    {/* Breadcrumb */}
-                    <nav className="mb-8">
-                        <ol className="flex items-center space-x-2 text-sm">
-                            <li>
-                                <Link to="/" className="text-blue-600 hover:text-blue-800">
-                                    {t("nav.home")}
-                                </Link>
-                            </li>
-                            <li className="text-gray-400">/</li>
-                            <li className="text-gray-600">{t("about.title")}</li>
-                        </ol>
-                    </nav>
+      <section className="pt-40 pb-32 bg-black min-h-screen relative overflow-hidden text-white">
+        {/* Background Effects */}
+        <div className="absolute inset-0 grid-background opacity-10 pointer-events-none" />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 blur-[120px] rounded-full pointer-events-none" />
 
-                    {/* Hero Section */}
-                    <div className="text-center mb-16">
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-                            {t("about.title")}
-                        </h1>
-                        <p className="text-xl text-blue-600 font-semibold mb-4">
-                            {t("about.subtitle")}
-                        </p>
-                        <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                            {t("about.description")}
-                        </p>
-                    </div>
+        <div className="container mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Header */}
+          <div className="max-w-3xl mb-32">
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-5xl md:text-8xl font-extrabold tracking-tight mb-12"
+            >
+              Who We <span className="text-white/40">Are.</span>
+            </motion.h1>
+            
+            <p className="text-xl md:text-2xl text-gray-400 leading-relaxed font-medium">
+              Indo Caris International is a technology-first consulting firm. We bridge the gap between complex engineering and business impact, helping organizations navigate the digital future with confidence.
+            </p>
+          </div>
 
-                    {/* Mission & Vision */}
-                    <div className="grid md:grid-cols-2 gap-8 mb-16">
-                        <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                            <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
-                                <Icon icon="solar:target-bold" className="text-3xl text-blue-600" />
-                            </div>
-                            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                                {t("about.mission_title")}
-                            </h2>
-                            <p className="text-gray-600 leading-relaxed">
-                                {t("about.mission_text")}
-                            </p>
-                        </div>
+          {/* Mission & Vision Grid */}
+          <div className="grid md:grid-cols-2 gap-px bg-white/10 border border-white/10 rounded-3xl overflow-hidden mb-32">
+            <div className="bg-black p-12 lg:p-20">
+              <div className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center mb-8 border border-white/10">
+                <Icon icon="solar:target-bold" className="text-2xl text-white" />
+              </div>
+              <h2 className="text-3xl font-bold mb-6">Our Mission</h2>
+              <p className="text-gray-500 text-lg leading-relaxed">
+                To empower businesses through cutting-edge technology, delivering scalable and innovative digital solutions that drive sustainable growth.
+              </p>
+            </div>
 
-                        <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                            <div className="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mb-6">
-                                <Icon icon="solar:eye-bold" className="text-3xl text-purple-600" />
-                            </div>
-                            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                                {t("about.vision_title")}
-                            </h2>
-                            <p className="text-gray-600 leading-relaxed">
-                                {t("about.vision_text")}
-                            </p>
-                        </div>
-                    </div>
+            <div className="bg-black p-12 lg:p-20">
+              <div className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center mb-8 border border-white/10">
+                <Icon icon="solar:eye-bold" className="text-2xl text-white" />
+              </div>
+              <h2 className="text-3xl font-bold mb-6">Our Vision</h2>
+              <p className="text-gray-500 text-lg leading-relaxed">
+                To be the most trusted global partner for digital transformation, recognized for our engineering excellence and strategic insight.
+              </p>
+            </div>
+          </div>
 
-                    {/* Values */}
-                    <div className="mb-16">
-                        <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-                            {t("about.values_title")}
-                        </h2>
-                        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                            {[
-                                { icon: "solar:lightbulb-bolt-bold", color: "yellow", title: t("about.value1_title"), text: t("about.value1_text") },
-                                { icon: "solar:medal-star-bold", color: "blue", title: t("about.value2_title"), text: t("about.value2_text") },
-                                { icon: "solar:shield-check-bold", color: "green", title: t("about.value3_title"), text: t("about.value3_text") },
-                                { icon: "solar:users-group-two-rounded-bold", color: "purple", title: t("about.value4_title"), text: t("about.value4_text") },
-                            ].map((value, index) => (
-                                <div
-                                    key={index}
-                                    className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 text-center"
-                                >
-                                    <div className={`w-14 h-14 bg-${value.color}-100 rounded-xl flex items-center justify-center mx-auto mb-4`}>
-                                        <Icon icon={value.icon} className={`text-2xl text-${value.color}-600`} />
-                                    </div>
-                                    <h3 className="text-lg font-bold text-gray-900 mb-2">{value.title}</h3>
-                                    <p className="text-gray-600 text-sm">{value.text}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* CTA */}
-                    <div className="text-center bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-12 text-white">
-                        <h2 className="text-3xl font-bold mb-4">
-                            {t("contact.subtitle")}
-                        </h2>
-                        <p className="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
-                            {t("contact.description")}
-                        </p>
-                        <Link
-                            to="/contact"
-                            className="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200"
-                        >
-                            {t("nav.contact")}
-                            <Icon icon="solar:arrow-right-bold" />
-                        </Link>
-                    </div>
+          {/* Values */}
+          <div className="mb-40">
+            <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-white/30 text-center mb-20">
+              Our Core Values
+            </h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {[
+                { icon: "solar:lightbulb-bolt-bold", title: "Innovation", text: "We constantly push boundaries to find better ways." },
+                { icon: "solar:medal-star-bold", title: "Excellence", text: "We strive for perfection in every line of code." },
+                { icon: "solar:shield-check-bold", title: "Integrity", text: "We build trust through transparency and honesty." },
+                { icon: "solar:users-group-two-rounded-bold", title: "Collaboration", text: "We work as an extension of your own team." },
+              ].map((value, index) => (
+                <div key={index} className="text-center group">
+                  <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mx-auto mb-6 border border-white/5 transition-colors group-hover:border-white/20 group-hover:bg-white/10">
+                    <Icon icon={value.icon} className="text-2xl text-white/40 group-hover:text-white transition-colors" />
+                  </div>
+                  <h3 className="text-lg font-bold mb-2">{value.title}</h3>
+                  <p className="text-gray-500 text-sm">{value.text}</p>
                 </div>
-            </section>
-        </>
-    );
+              ))}
+            </div>
+          </div>
+
+          {/* Final CTA */}
+          <div className="text-center py-24 px-12 bg-white rounded-[3rem] text-black">
+            <h2 className="text-4xl lg:text-6xl font-extrabold tracking-tight mb-8">
+              Let's build something <br /> extraordinary.
+            </h2>
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 bg-black text-white px-10 py-4 rounded-full font-bold hover:scale-105 transition-all"
+            >
+              Start Your Journey
+              <Icon icon="solar:arrow-right-bold" />
+            </Link>
+          </div>
+        </div>
+      </section>
+    </>
+  );
 };
 
 export default About;

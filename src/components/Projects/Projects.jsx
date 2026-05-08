@@ -5,12 +5,13 @@ import "slick-carousel/slick/slick-theme.css";
 import { supabase } from "../../supabaseClient";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
 
 const Projects = () => {
   const { t } = useTranslation();
   const [projects, setProjects] = useState([]);
   const [isMobile, setIsMobile] = useState(false);
-  const [visibleCount, setVisibleCount] = useState(3); // awalnya 3
+  const [visibleCount, setVisibleCount] = useState(3);
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -23,7 +24,6 @@ const Projects = () => {
     };
     fetchProjects();
 
-    // cek ukuran layar
     const handleResize = () => setIsMobile(window.innerWidth < 768);
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -31,116 +31,105 @@ const Projects = () => {
   }, []);
 
   const settings = {
-    dots: false,
+    dots: true,
     infinite: true,
     slidesToShow: 3,
-    slidesToScroll: 2,
+    slidesToScroll: 1,
     arrows: false,
     autoplay: true,
-    speed: 500,
-    cssEase: "linear",
+    speed: 800,
+    autoplaySpeed: 4000,
     responsive: [
-      { breakpoint: 1280, settings: { slidesToShow: 2, slidesToScroll: 1 } },
-      { breakpoint: 768, settings: { slidesToShow: 1, slidesToScroll: 1 } },
+      { breakpoint: 1280, settings: { slidesToShow: 2 } },
+      { breakpoint: 768, settings: { slidesToShow: 1 } },
     ],
   };
 
   const getImageUrl = (path) =>
-    `${import.meta.env.VITE_SUPABASE_URL
-    }/storage/v1/object/public/projects/${path}`;
+    `${import.meta.env.VITE_SUPABASE_URL}/storage/v1/object/public/projects/${path}`;
 
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString("id-ID", {
-      day: "2-digit",
-      month: "long",
-      year: "numeric",
-    });
-  };
-
-  // Komponen card project
   const ProjectCard = ({ proj }) => (
-    <div className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col min-h-[380px]">
-      <div className="w-full h-44 sm:h-52 overflow-hidden">
+    <div className="group relative overflow-hidden rounded-2xl bg-[#0a0a0a] border border-white/10 transition-all hover:border-white/30 h-[450px]">
+      <div className="h-2/3 w-full overflow-hidden">
         <img
           src={getImageUrl(proj.image_url)}
-          alt={`${proj.project_name} - ${proj.jenis_project} project by Indo Caris International IT Consultant Jakarta`}
-          className="w-full h-full object-cover"
+          alt={proj.project_name}
+          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100"
           loading="lazy"
         />
       </div>
-      <div className="p-4 flex flex-col flex-1">
-        <h3 className="text-base sm:text-lg font-bold text-black mb-2 capitalize">
-          {proj.project_name}
-        </h3>
-        <p className="text-sm text-gray-600 line-clamp-3 flex-1">
+      <div className="p-8">
+        <div className="flex justify-between items-start mb-4">
+          <div>
+            <span className="text-[10px] font-bold uppercase tracking-widest text-white/30 mb-2 block">
+              {proj.jenis_project}
+            </span>
+            <h3 className="text-xl font-bold text-white group-hover:text-accent transition-colors">
+              {proj.project_name}
+            </h3>
+          </div>
+          <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase border ${
+            proj.status === "selesai" ? "border-green-500/50 text-green-500" : "border-yellow-500/50 text-yellow-500"
+          }`}>
+            {proj.status}
+          </span>
+        </div>
+        <p className="text-sm text-gray-500 line-clamp-2 leading-relaxed">
           {proj.deskripsi}
         </p>
-        <div className="mt-auto">
-          <div className="flex justify-between items-center py-2 border-t border-gray-200 mt-4">
-            <span className="text-xs text-gray-600">{proj.jenis_project}</span>
-            <span
-              className={`px-2 py-1 rounded-full text-[10px] sm:text-xs font-medium ${proj.status === "selesai"
-                  ? "bg-green-100 text-green-700"
-                  : proj.status === "proses"
-                    ? "bg-yellow-100 text-yellow-700"
-                    : "bg-gray-100 text-gray-700"
-                }`}
-            >
-              {proj.status}
-            </span>
-          </div>
-          <div className="text-[11px] text-gray-500 mt-2">
-            {formatDate(proj.created_at)}
-          </div>
-        </div>
+      </div>
+      
+      {/* Hover Overlay Link */}
+      <div className="absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center bg-black/40 backdrop-blur-[2px]">
+        <button className="bg-white text-black px-6 py-2 rounded-full font-bold text-sm transform translate-y-4 group-hover:translate-y-0 transition-transform">
+          View Project
+        </button>
       </div>
     </div>
   );
 
   return (
-    <section id="projects" className="py-20">
+    <section id="projects" className="py-32 bg-black border-b border-white/5">
       <div className="container mx-auto max-w-screen-xl px-4">
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-12">
-          <h2 className="text-gray-950 text-3xl md:text-4xl font-bold mb-4 sm:mb-0">
-            {t("projects.title")}
-          </h2>
+        <div className="flex flex-col sm:flex-row justify-between items-end mb-16 gap-6">
+          <div className="max-w-xl">
+            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-6">
+              Selected Works.
+            </h2>
+            <p className="text-gray-500 text-lg">
+              A showcase of our recent engineering projects and digital solutions delivered to clients worldwide.
+            </p>
+          </div>
           <Link
             to="/#projects"
-            className="text-blue-500 text-base md:text-lg font-medium hover:tracking-widest duration-500"
+            className="text-white font-bold text-sm uppercase tracking-widest border-b border-white/20 pb-1 hover:border-white transition-all"
           >
-            {t("projects.explore")}&nbsp;&gt;&nbsp;
+            {t("projects.explore")} &rarr;
           </Link>
         </div>
 
-        {/* Desktop pakai slider */}
         {!isMobile ? (
-          <Slider {...settings}>
+          <Slider {...settings} className="project-slider -mx-4">
             {projects.map((proj) => (
-              <div key={proj.id} className="px-2">
+              <div key={proj.id} className="px-4 pb-12">
                 <ProjectCard proj={proj} />
               </div>
             ))}
           </Slider>
         ) : (
-          // Mobile pakai grid + tombol load more
-          <>
-            <div className="grid grid-cols-1 gap-6">
-              {projects.slice(0, visibleCount).map((proj) => (
-                <ProjectCard key={proj.id} proj={proj} />
-              ))}
-            </div>
+          <div className="space-y-6">
+            {projects.slice(0, visibleCount).map((proj) => (
+              <ProjectCard key={proj.id} proj={proj} />
+            ))}
             {visibleCount < projects.length && (
-              <div className="flex justify-center mt-6">
-                <button
-                  onClick={() => setVisibleCount(visibleCount + 5)}
-                  className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-                >
-                  Lihat lainnya
-                </button>
-              </div>
+              <button
+                onClick={() => setVisibleCount(visibleCount + 5)}
+                className="w-full py-4 border border-white/10 text-white font-bold rounded-xl hover:bg-white/5 transition-all"
+              >
+                Load More
+              </button>
             )}
-          </>
+          </div>
         )}
       </div>
     </section>

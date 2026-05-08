@@ -17,7 +17,6 @@ const Companies = () => {
         return;
       }
 
-      // Generate public URL dari storage
       const updatedClients = data.map((client) => {
         const { data: urlData } = supabase.storage
           .from("clients")
@@ -42,46 +41,51 @@ const Companies = () => {
     slidesToScroll: 1,
     arrows: false,
     autoplay: true,
-    speed: 2000,
-    autoplaySpeed: 2000,
+    speed: 3000,
+    autoplaySpeed: 0,
     cssEase: "linear",
+    pauseOnHover: false,
     responsive: [
       {
-        breakpoint: 1280, // laptop
-        settings: { slidesToShow: 4, slidesToScroll: 1 },
+        breakpoint: 1280,
+        settings: { slidesToShow: 4 },
       },
       {
-        breakpoint: 1024, // tablet landscape
-        settings: { slidesToShow: 3, slidesToScroll: 1 },
+        breakpoint: 1024,
+        settings: { slidesToShow: 3 },
       },
       {
-        breakpoint: 768, // tablet portrait
-        settings: { slidesToShow: 2, slidesToScroll: 1 },
+        breakpoint: 768,
+        settings: { slidesToShow: 2 },
       },
       {
-        breakpoint: 480, // smartphone
-        settings: { slidesToShow: 1, slidesToScroll: 1 },
+        breakpoint: 480,
+        settings: { slidesToShow: 2 },
       },
     ],
   };
 
   return (
-    <section className="text-center">
-      <div className="container mx-auto max-w-screen-xl px-4 mt-20 sm:mt-32 lg:mt-40">
-        <h2 className="text-gray-800 text-xl sm:text-2xl font-semibold">
+    <section className="bg-black py-20 border-y border-white/5 overflow-hidden">
+      <div className="container mx-auto max-w-screen-xl px-4">
+        <h2 className="text-white/30 text-xs font-bold uppercase tracking-[0.3em] text-center mb-16">
           {t("companies.title")}
         </h2>
-        <div className="py-10 sm:py-14 border-b border-gray-300">
-          <Slider {...settings}>
+        <div className="relative">
+          {/* Fading Edges */}
+          <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-black to-transparent z-10" />
+          <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-black to-transparent z-10" />
+          
+          <Slider {...settings} className="client-slider">
             {clients.map((client) => (
               <div
                 key={client.id}
-                className="flex justify-center items-center px-2"
+                className="flex justify-center items-center px-8 outline-none"
               >
                 <img
                   src={client.logo_url}
                   alt={client.nama_client}
-                  className="object-contain max-h-14 sm:max-h-16 md:max-h-20 lg:max-h-24 w-auto"
+                  className="object-contain h-12 w-auto opacity-30 grayscale invert hover:opacity-100 transition-opacity duration-500"
                 />
               </div>
             ))}
