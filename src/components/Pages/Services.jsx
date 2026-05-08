@@ -89,7 +89,7 @@ const Services = () => {
               className="text-xl text-gray-400 leading-relaxed"
             >
               We don't just build software; we engineer competitive advantages. Explore our comprehensive suite of IT services designed to scale your business.
-            </p>
+            </motion.p>
           </div>
 
           {/* Services Grid */}
@@ -120,12 +120,65 @@ const Services = () => {
             ))}
           </div>
 
+          {/* Pricing Section */}
+          <div className="mt-40 mb-20 text-center">
+            <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-6">Transparent Pricing.</h2>
+            <p className="text-gray-500 text-lg max-w-2xl mx-auto">Flexible packages tailored to your business stage and requirements.</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { 
+                name: "Starter", 
+                price: "Rp 15jt", 
+                desc: "Cocok untuk startup dan MVP bisnis kecil.",
+                features: ["Single Platform (Web)", "Standard UI/UX Design", "Core Functionality", "3 Bulan Support"] 
+              },
+              { 
+                name: "Professional", 
+                price: "Rp 45jt", 
+                desc: "Ideal untuk perusahaan yang sedang berkembang.",
+                features: ["Cross-platform (Web/Mobile)", "Premium Custom Design", "Advanced Analytics", "Dedicated Project Manager", "6 Bulan Support"],
+                highlight: true 
+              },
+              { 
+                name: "Enterprise", 
+                price: "Custom", 
+                desc: "Sistem kompleks untuk organisasi skala besar.",
+                features: ["Multi-platform Ecosystem", "High-level Security Audit", "AI Integration", "Legacy System Migration", "24/7 Priority Support"] 
+              }
+            ].map((pkg, i) => (
+              <div 
+                key={i} 
+                className={`p-10 rounded-[2rem] border ${pkg.highlight ? 'border-white bg-white/5 shadow-[0_0_50px_rgba(255,255,255,0.1)]' : 'border-white/10 bg-[#0a0a0a]'} flex flex-col`}
+              >
+                <h3 className="text-xl font-bold mb-2">{pkg.name}</h3>
+                <div className="text-3xl font-black mb-4">{pkg.price}</div>
+                <p className="text-sm text-gray-500 mb-8">{pkg.desc}</p>
+                <ul className="space-y-4 flex-1">
+                  {pkg.features.map((f, j) => (
+                    <li key={j} className="flex items-center gap-3 text-sm text-gray-400">
+                      <Icon icon="solar:check-circle-bold" className="text-white text-lg" />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                <Link 
+                  to="/contact" 
+                  className={`mt-10 py-4 rounded-xl font-bold text-center transition-all ${pkg.highlight ? 'bg-white text-black hover:bg-gray-200' : 'bg-white/5 text-white border border-white/10 hover:bg-white/10'}`}
+                >
+                  Choose {pkg.name}
+                </Link>
+              </div>
+            ))}
+          </div>
+
           {/* CTA Section */}
           <motion.div 
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mt-32 p-12 lg:p-20 bg-white rounded-[2rem] text-black flex flex-col lg:flex-row items-center justify-between gap-12"
+            className="mt-40 p-12 lg:p-20 bg-white rounded-[2rem] text-black flex flex-col lg:flex-row items-center justify-between gap-12"
           >
             <div className="max-w-xl text-center lg:text-left">
               <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight mb-6">

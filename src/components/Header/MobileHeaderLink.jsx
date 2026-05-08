@@ -1,97 +1,73 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { Icon } from "@iconify/react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const MobileHeaderLink = ({ item, onNavigate }) => {
   const { t } = useTranslation();
-  const [submenuOpen, setSubmenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
-  const handleScroll = (e, href) => {
-    e.preventDefault();
-    const id = href.replace("/", "").replace("#", "");
-    const target = document.getElementById(id);
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-    if (onNavigate) {
-      setTimeout(() => onNavigate(), 300);
-    }
-  };
-
   const handleToggle = (e) => {
-    if (item.submenu) {
+    if (item.children) {
       e.preventDefault();
-      setSubmenuOpen(!submenuOpen);
+      setIsOpen(!isOpen);
     } else {
-      if (item.href.includes("#")) {
-        handleScroll(e, item.href);
-      } else {
-        if (onNavigate) onNavigate();
-      }
+      if (onNavigate) onNavigate();
     }
   };
 
   const isActive =
     location.pathname === item.href ||
-    (item.submenu &&
-      item.submenu.some((subItem) => location.pathname === subItem.href));
+    (item.children &&
+      item.children.some((sub) => location.pathname === sub.href));
 
   return (
     <div className="w-full">
-      {item.href.includes("#") ? (
-        <button
-          onClick={handleToggle}
-          className={`flex items-center justify-between w-full py-4 text-2xl font-bold transition-colors duration-200 ${
-            isActive ? "text-white" : "text-white/40 hover:text-white"
-          }`}
-        >
-          <span className="capitalize">{t(item.label)}</span>
-          {item.submenu && (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              className={`transition-transform duration-200 ${submenuOpen ? "rotate-180" : ""}`}
-            >
-              <path
-                fill="none"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="1.5"
-                d="m7 10l5 5l5-5"
-              />
-            </svg>
-          )}
-        </button>
-      ) : (
+      <div className="flex items-center justify-between w-full border-b border-white/5">
         <Link
           to={item.href}
           onClick={handleToggle}
-          className={`flex items-center justify-between w-full py-4 text-2xl font-bold transition-colors duration-200 ${
-            isActive ? "text-white" : "text-white/40 hover:text-white"
+          className={`flex-1 py-6 text-3xl font-black tracking-tighter transition-colors ${
+            isActive ? "text-white" : "text-white/30"
           }`}
         >
-          <span className="capitalize">{t(item.label)}</span>
+          {t(item.label)}
         </Link>
-      )}
+        {item.children && (
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="p-6 text-white/30"
+          >
+            <Icon icon="tabler:chevron-down" className={`text-2xl transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
+          </button>
+        )}
+      </div>
 
-      {item.submenu && submenuOpen && (
-        <div className="mt-2 ml-4 space-y-4 border-l-2 border-white/10 pl-6">
-          {item.submenu.map((subItem, index) => (
-            <Link
-              key={index}
-              to={subItem.href}
-              onClick={() => onNavigate && onNavigate()}
-              className="block text-xl font-medium text-white/40 hover:text-white transition-colors"
-            >
-              {subItem.label}
-            </Link>
-          ))}
-        </div>
-      )}
+      <AnimatePresence>
+        {item.children && isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="overflow-hidden"
+          >
+            <div className="py-4 space-y-4 pl-6 border-l border-white/10 mt-4">
+              {item.children.map((sub, index) => (
+                <Link
+                  key={index}
+                  to={sub.href}
+                  onClick={() => onNavigate && onNavigate()}
+                  className="block text-xl font-bold text-white/20 hover:text-white transition-colors uppercase tracking-widest"
+                >
+                  {sub.label}
+                </Link>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

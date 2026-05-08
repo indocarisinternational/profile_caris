@@ -10,6 +10,7 @@ import { motion } from "framer-motion";
 const DetailTeam = () => {
   const { t } = useTranslation();
   const { slug } = useParams();
+  const navigate = useNavigate();
   const [employee, setEmployee] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -95,10 +96,13 @@ const DetailTeam = () => {
         
         {/* Header Navigation */}
         <div className="container mx-auto max-w-6xl px-4 py-8 relative z-10 flex justify-between items-center">
-          <Link to="/" className="text-white/40 hover:text-white transition-colors flex items-center gap-2 font-bold text-sm uppercase tracking-widest">
+          <button 
+            onClick={() => navigate(-1)}
+            className="text-white/40 hover:text-white transition-colors flex items-center gap-2 font-bold text-sm uppercase tracking-widest"
+          >
             <Icon icon="solar:arrow-left-linear" />
             Back
-          </Link>
+          </button>
           <div className="text-white/20 font-black tracking-tighter">CARIS</div>
         </div>
 

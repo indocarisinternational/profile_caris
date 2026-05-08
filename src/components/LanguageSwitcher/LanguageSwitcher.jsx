@@ -1,32 +1,60 @@
 import { useTranslation } from 'react-i18next';
 import { Icon } from '@iconify/react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
 
 const LanguageSwitcher = () => {
-    const { i18n, t } = useTranslation();
+    const { i18n } = useTranslation();
+    const [isOpen, setIsOpen] = useState(false);
 
-    const toggleLanguage = () => {
-        const newLang = i18n.language === 'id' ? 'en' : 'id';
-        i18n.changeLanguage(newLang);
-        localStorage.setItem('language', newLang);
+    const languages = [
+        { code: 'id', name: 'ID', flag: 'circle-flags:id' },
+        { code: 'en', name: 'EN', flag: 'circle-flags:gb' }
+    ];
+
+    const currentLang = languages.find(l => l.code === i18n.language) || languages[0];
+
+    const selectLanguage = (code) => {
+        i18n.changeLanguage(code);
+        localStorage.setItem('language', code);
+        setIsOpen(false);
     };
 
     return (
-        <button
-            onClick={toggleLanguage}
-            className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/80 hover:bg-white shadow-sm border border-gray-200 transition-all duration-200 hover:shadow-md"
-            title={t('language.switch')}
-            aria-label={t('language.switch')}
-        >
-            <Icon
-                icon="circle-flags:id"
-                className={`w-5 h-5 transition-opacity ${i18n.language === 'id' ? 'opacity-100' : 'opacity-40'}`}
-            />
-            <span className="text-sm font-medium text-gray-700">/</span>
-            <Icon
-                icon="circle-flags:gb"
-                className={`w-5 h-5 transition-opacity ${i18n.language === 'en' ? 'opacity-100' : 'opacity-40'}`}
-            />
-        </button>
+        <div className="relative">
+            <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all"
+            >
+                <Icon icon={currentLang.flag} className="w-4 h-4" />
+                <span className="text-xs font-bold text-white/70 uppercase tracking-wider">{currentLang.name}</span>
+                <Icon icon="tabler:chevron-down" className={`w-3 h-3 text-white/30 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+            </button>
+
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        className="absolute right-0 mt-2 w-32 bg-[#0a0a0a] border border-white/10 rounded-xl overflow-hidden shadow-2xl z-50"
+                    >
+                        {languages.map((lang) => (
+                            <button
+                                key={lang.code}
+                                onClick={() => selectLanguage(lang.code)}
+                                className={`w-full flex items-center gap-3 px-4 py-3 text-left text-sm font-medium transition-colors ${
+                                    i18n.language === lang.code ? 'bg-white/10 text-white' : 'text-white/40 hover:bg-white/5 hover:text-white'
+                                }`}
+                            >
+                                <Icon icon={lang.flag} className="w-4 h-4" />
+                                {lang.name === 'ID' ? 'Indonesia' : 'English'}
+                            </button>
+                        ))}
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </div>
     );
 };
 

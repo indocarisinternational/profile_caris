@@ -39,6 +39,8 @@ const Projects = () => {
     autoplay: true,
     speed: 800,
     autoplaySpeed: 4000,
+    draggable: true,
+    swipe: true,
     responsive: [
       { breakpoint: 1280, settings: { slidesToShow: 2 } },
       { breakpoint: 768, settings: { slidesToShow: 1 } },
@@ -49,7 +51,7 @@ const Projects = () => {
     `${import.meta.env.VITE_SUPABASE_URL}/storage/v1/object/public/projects/${path}`;
 
   const ProjectCard = ({ proj }) => (
-    <div className="group relative overflow-hidden rounded-2xl bg-[#0a0a0a] border border-white/10 transition-all hover:border-white/30 h-[450px]">
+    <Link to={`/project/${proj.id}`} className="group relative overflow-hidden rounded-2xl bg-[#0a0a0a] border border-white/10 transition-all hover:border-white/30 h-[450px] block">
       <div className="h-2/3 w-full overflow-hidden">
         <img
           src={getImageUrl(proj.image_url)}
@@ -85,7 +87,7 @@ const Projects = () => {
           View Project
         </button>
       </div>
-    </div>
+    </Link>
   );
 
   return (
@@ -101,7 +103,7 @@ const Projects = () => {
             </p>
           </div>
           <Link
-            to="/#projects"
+            to="/projects"
             className="text-white font-bold text-sm uppercase tracking-widest border-b border-white/20 pb-1 hover:border-white transition-all"
           >
             {t("projects.explore")} &rarr;

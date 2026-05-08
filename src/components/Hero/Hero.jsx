@@ -72,23 +72,23 @@ const Hero = () => {
             </Link>
           </motion.div>
 
-          {/* Partners / Trusted By (Minimalist) */}
+          {/* Feature Badges (Replacing redundant Trusted By) */}
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.4 }}
-            className="pt-20 space-y-8 w-full"
+            className="pt-20 grid grid-cols-1 sm:grid-cols-3 gap-8 w-full max-w-4xl"
           >
-            <p className="text-xs font-semibold tracking-[0.2em] uppercase text-white/30">
-              Trusted by industry leaders
-            </p>
-            <div className="flex flex-wrap justify-center items-center gap-12 sm:gap-20 opacity-30 grayscale invert">
-              {/* Replace with actual partner logos or minimalist icons */}
-              <Icon icon="logos:google" width="100" />
-              <Icon icon="logos:microsoft" width="100" />
-              <Icon icon="logos:amazon-aws" width="60" />
-              <Icon icon="logos:meta" width="100" />
-            </div>
+            {[
+              { icon: "solar:rocket-bold", text: "Fast Delivery" },
+              { icon: "solar:shield-check-bold", text: "Secure by Design" },
+              { icon: "solar:medal-star-bold", text: "Premium Quality" },
+            ].map((feature, i) => (
+              <div key={i} className="flex items-center justify-center gap-3 text-white/30">
+                <Icon icon={feature.icon} className="text-xl" />
+                <span className="text-xs font-bold uppercase tracking-widest">{feature.text}</span>
+              </div>
+            ))}
           </motion.div>
         </div>
       </div>

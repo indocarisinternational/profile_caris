@@ -11,6 +11,8 @@ import SkipLinks from "./components/Accessibility/SkipLinks";
 import About from "./components/Pages/About";
 import Services from "./components/Pages/Services";
 import Contact from "./components/Pages/Contact";
+import AllProjects from "./components/Projects/AllProjects";
+import ProjectDetail from "./components/Projects/ProjectDetail";
 
 const App = () => {
   return (
@@ -42,6 +44,12 @@ const App = () => {
               </>
             }
           />
+
+          {/* All Projects page */}
+          <Route path="/projects" element={<><AllProjects /><Footer /></>} />
+
+          {/* Project detail page */}
+          <Route path="/project/:id" element={<><ProjectDetail /><Footer /></>} />
 
           {/* About page */}
           <Route path="/about" element={<><About /><Footer /></>} />
