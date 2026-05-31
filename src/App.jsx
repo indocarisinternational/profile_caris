@@ -13,10 +13,12 @@ import Services from "./components/Pages/Services";
 import Contact from "./components/Pages/Contact";
 import AllProjects from "./components/Projects/AllProjects";
 import ProjectDetail from "./components/Projects/ProjectDetail";
+import PageTracker from "./components/PageTracker";
 
 const App = () => {
   return (
     <>
+      <PageTracker />
       <SkipLinks />
       <Header />
       <main id="main-content">
