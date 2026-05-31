@@ -14,10 +14,12 @@ import Contact from "./components/Pages/Contact";
 import AllProjects from "./components/Projects/AllProjects";
 import ProjectDetail from "./components/Projects/ProjectDetail";
 import PageTracker from "./components/PageTracker";
+import { Analytics } from "@vercel/analytics/react";
 
 const App = () => {
   return (
     <>
+      <Analytics />
       <PageTracker />
       <SkipLinks />
       <Header />
