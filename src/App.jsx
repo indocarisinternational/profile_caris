@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import Companies from "./components/Companies/Companies";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
@@ -16,13 +16,28 @@ import ProjectDetail from "./components/Projects/ProjectDetail";
 import PageTracker from "./components/PageTracker";
 import { Analytics } from "@vercel/analytics/react";
 
+import usePageTracking from "./hooks/usePageTracking";
+import AdminRoute from "./components/AdminRoute";
+import AdminAuth from "./pages/admin/AdminAuth";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import HomeEditor from "./pages/admin/sections/HomeEditor";
+import ServicesEditor from "./pages/admin/sections/ServicesEditor";
+import ProjectsEditor from "./pages/admin/sections/ProjectsEditor";
+import AboutEditor from "./pages/admin/sections/AboutEditor";
+import ContactEditor from "./pages/admin/sections/ContactEditor";
+import AdminAnalytics from "./pages/admin/AdminAnalytics";
+
 const App = () => {
+  usePageTracking();
+  const location = useLocation();
+  const isAdmin = location.pathname.startsWith("/admin-panel");
+
   return (
     <>
       <Analytics />
       <PageTracker />
       <SkipLinks />
-      <Header />
+      {!isAdmin && <Header />}
       <main id="main-content">
         <Routes>
           {/* Halaman utama */}
@@ -32,8 +47,8 @@ const App = () => {
               <>
                 <SEO
                   title="Indo Caris International - Leading IT Consultant & Digital Solutions Jakarta"
-                  description="Transform your business with Indo Caris International's expert IT consulting services. We deliver scalable digital solutions, innovative software development, and comprehensive technology strategies for companies across Jakarta and Indonesia."
-                  keywords="IT Consultant Jakarta, Jasa IT Support Indonesia, Digital Solutions Jakarta, Software Development Indonesia, Technology Consultant Jakarta, IT Services Indonesia, Digital Transformation Jakarta"
+                  description="Transform your business with Indo Caris International's expert IT consulting services."
+                  keywords="IT Consultant Jakarta, Digital Solutions Jakarta, Software Development Indonesia"
                   url="/"
                 />
                 <Schema type="organization" />
@@ -66,6 +81,23 @@ const App = () => {
 
           {/* Halaman detail employee */}
           <Route path="/:slug" element={<DetailTeam />} />
+
+          {/* Admin Routes */}
+          <Route path="/admin-panel" element={<Navigate to="/admin-panel/dashboard" replace />} />
+          <Route path="/admin-panel/auth" element={<AdminAuth />} />
+          <Route element={<AdminRoute />}>
+            <Route path="/admin-panel/dashboard" element={<AdminDashboard />}>
+              <Route index element={<Navigate to="/admin-panel/dashboard/home" replace />} />
+              <Route path="home" element={<HomeEditor />} />
+              <Route path="services" element={<ServicesEditor />} />
+              <Route path="projects" element={<ProjectsEditor />} />
+              <Route path="about" element={<AboutEditor />} />
+              <Route path="contact" element={<ContactEditor />} />
+            </Route>
+            <Route path="/admin-panel/analytics" element={<AdminDashboard />}>
+              <Route index element={<AdminAnalytics />} />
+            </Route>
+          </Route>
         </Routes>
       </main>
     </>
@@ -73,4 +105,3 @@ const App = () => {
 };
 
 export default App;
-

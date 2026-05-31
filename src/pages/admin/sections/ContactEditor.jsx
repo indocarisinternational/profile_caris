@@ -1,0 +1,88 @@
+import { useState, useEffect } from "react";
+import { supabase } from "../../../supabaseClient";
+import { Icon } from "@iconify/react";
+import toast from "react-hot-toast";
+
+const Field = ({ label, value, onChange, multiline }) => (
+  <div className="space-y-2">
+    <label className="text-xs font-bold uppercase tracking-widest text-white/30">{label}</label>
+    {multiline ? (
+      <textarea value={value} onChange={onChange} rows={3}
+        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-white/30 text-sm resize-none" />
+    ) : (
+      <input type="text" value={value} onChange={onChange}
+        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-white/30 text-sm" />
+    )}
+  </div>
+);
+
+const ContactEditor = () => {
+  const [data, setData] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
+
+  useEffect(() => {
+    (async () => {
+      setLoading(true);
+      const { data: rows, error } = await supabase.from("site_content").select("*").eq("section", "contact");
+      if (!error) {
+        const m = {};
+        rows.forEach((r) => (m[r.key] = { id: r.id, value: r.value }));
+        setData(m);
+      }
+      setLoading(false);
+    })();
+  }, []);
+
+  const v = (k) => data[k]?.value || "";
+  const ch = (k, val) => setData((p) => ({ ...p, [k]: { ...p[k], value: val } }));
+
+  const save = async () => {
+    setSaving(true);
+    try {
+      const ups = Object.values(data).map(({ id, value }) =>
+        supabase.from("site_content").update({ value, updated_at: new Date().toISOString() }).eq("id", id)
+      );
+      const res = await Promise.all(ups);
+      if (res.some(r => r.error)) throw new Error("Some updates failed");
+      toast.success("Saved Contact Section!");
+    } catch (e) { toast.error(e.message); }
+    setSaving(false);
+  };
+
+  if (loading) return <div className="flex justify-center py-20"><div className="w-8 h-8 border-2 border-white/20 border-t-white rounded-full animate-spin" /></div>;
+
+  return (
+    <div>
+      <div className="flex items-center justify-between mb-8">
+        <div>
+          <h1 className="text-2xl font-bold text-white">Contact Page</h1>
+          <p className="text-white/30 text-sm mt-1">Manage contact information and header</p>
+        </div>
+        <button onClick={save} disabled={saving} className="flex items-center gap-2 bg-white text-black px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-white/90 disabled:opacity-50">
+          <Icon icon={saving ? "solar:refresh-bold" : "solar:diskette-bold"} className={saving ? "animate-spin" : ""} />
+          {saving ? "Saving..." : "Save"}
+        </button>
+      </div>
+
+      <div className="space-y-6">
+        <div className="bg-[#0a0a0a] border border-white/10 rounded-2xl p-6 space-y-4">
+          <h3 className="text-white font-bold text-sm uppercase tracking-widest opacity-50">Header</h3>
+          <Field label="Page Title" value={v("page_title")} onChange={(e) => ch("page_title", e.target.value)} />
+          <Field label="Page Subtitle" value={v("page_subtitle")} onChange={(e) => ch("page_subtitle", e.target.value)} multiline />
+        </div>
+
+        <div className="bg-[#0a0a0a] border border-white/10 rounded-2xl p-6 space-y-4">
+          <h3 className="text-white font-bold text-sm uppercase tracking-widest opacity-50">Contact Info</h3>
+          <div className="grid md:grid-cols-2 gap-4">
+            <Field label="Phone Number" value={v("phone")} onChange={(e) => ch("phone", e.target.value)} />
+            <Field label="Email Address" value={v("email")} onChange={(e) => ch("email", e.target.value)} />
+          </div>
+          <Field label="Location" value={v("location")} onChange={(e) => ch("location", e.target.value)} />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ContactEditor;
