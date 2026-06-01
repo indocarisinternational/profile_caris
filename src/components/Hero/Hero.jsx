@@ -88,6 +88,20 @@ const Hero = () => {
             >
               {c.cta_primary}
             </Link>
+            <a
+              href="https://wa.me/6281393139307?text=Halo%2C%20saya%20ingin%20tanya%20layanan%20Indo%20Caris%20International"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 px-10 py-4 rounded-full font-bold transition-all hover:scale-105 active:scale-95"
+              style={{
+                background: "#25D366",
+                color: "#fff",
+                boxShadow: "0 0 20px rgba(37, 211, 102, 0.3)",
+              }}
+            >
+              <Icon icon="mdi:whatsapp" className="text-xl" />
+              Chat WhatsApp
+            </a>
             <Link
               to="/services"
               className="px-10 py-4 rounded-full font-bold border border-white/10 bg-white/5 backdrop-blur-sm transition-all hover:bg-white/10 hover:border-white/20 active:scale-95"
@@ -96,12 +110,31 @@ const Hero = () => {
             </Link>
           </motion.div>
 
+          {/* Trust Metrics */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.3 }}
+            className="pt-12 grid grid-cols-3 gap-8 w-full max-w-3xl"
+          >
+            {[
+              { value: "50+", label: "Projects Delivered" },
+              { value: "5+", label: "Years Experience" },
+              { value: "24/7", label: "Support Available" },
+            ].map((stat, i) => (
+              <div key={i} className="text-center">
+                <div className="text-2xl sm:text-3xl font-extrabold text-white">{stat.value}</div>
+                <div className="text-xs font-medium uppercase tracking-widest text-white/30 mt-1">{stat.label}</div>
+              </div>
+            ))}
+          </motion.div>
+
           {/* Feature Badges */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.4 }}
-            className="pt-20 grid grid-cols-1 sm:grid-cols-3 gap-8 w-full max-w-4xl"
+            className="pt-12 grid grid-cols-1 sm:grid-cols-3 gap-8 w-full max-w-4xl"
           >
             {[
               { icon: "solar:rocket-bold", text: c.feature_1 },

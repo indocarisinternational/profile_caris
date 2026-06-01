@@ -43,6 +43,7 @@ const Contact = () => {
     { icon: "solar:phone-bold", title: "Phone", value: v("phone"), href: `tel:${v("phone").replace(/\s/g, "")}` },
     { icon: "solar:letter-bold", title: "Email", value: v("email"), href: `mailto:${v("email")}` },
     { icon: "solar:map-point-bold", title: "Location", value: v("location"), href: "#" },
+    { icon: "mdi:whatsapp", title: "WhatsApp", value: "Chat Langsung", href: "https://wa.me/6281393139307?text=Halo%2C%20saya%20ingin%20tanya%20layanan%20Indo%20Caris%20International" },
   ];
 
   return (
@@ -58,7 +59,30 @@ const Contact = () => {
                 {v("page_title").split(".")[0]} <br />
                 <span className="text-white/40">{v("page_title").split(".").slice(1).join(".").trim()}</span>
               </motion.h1>
-              <p className="text-xl text-gray-400 mb-12 leading-relaxed">{v("page_subtitle")}</p>
+              <p className="text-xl text-gray-400 mb-8 leading-relaxed">{v("page_subtitle")}</p>
+
+              {/* WhatsApp CTA Button */}
+              <a
+                href="https://wa.me/6281393139307?text=Halo%2C%20saya%20ingin%20tanya%20layanan%20Indo%20Caris%20International"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-lg transition-all hover:scale-105 active:scale-95 mb-4"
+                style={{
+                  background: "#25D366",
+                  color: "#fff",
+                  boxShadow: "0 0 24px rgba(37, 211, 102, 0.3)",
+                }}
+              >
+                <Icon icon="mdi:whatsapp" className="text-2xl" />
+                Chat WhatsApp Sekarang
+              </a>
+
+              {/* Trust Badge */}
+              <div className="flex items-center gap-2 mb-12 text-sm text-white/40">
+                <Icon icon="solar:clock-circle-bold" className="text-base" />
+                <span>Kami merespons dalam 24 jam — konsultasi gratis, tanpa komitmen</span>
+              </div>
+
               <div className="space-y-8">
                 {contactInfo.map((info, index) => (
                   <div key={index} className="flex items-start gap-6">
@@ -67,7 +91,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="text-sm font-bold text-white/40 uppercase tracking-widest mb-1">{info.title}</h3>
-                      <a href={info.href} className="text-xl font-bold hover:text-accent transition-colors">{info.value}</a>
+                      <a href={info.href} target={info.title === "WhatsApp" ? "_blank" : undefined} rel={info.title === "WhatsApp" ? "noopener noreferrer" : undefined} className="text-xl font-bold hover:text-accent transition-colors">{info.value}</a>
                     </div>
                   </div>
                 ))}

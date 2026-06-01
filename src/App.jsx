@@ -15,6 +15,7 @@ import AllProjects from "./components/Projects/AllProjects";
 import ProjectDetail from "./components/Projects/ProjectDetail";
 import PageTracker from "./components/PageTracker";
 import { Analytics } from "@vercel/analytics/react";
+import WhatsAppFloat from "./components/WhatsAppFloat/WhatsAppFloat";
 
 import usePageTracking from "./hooks/usePageTracking";
 import AdminRoute from "./components/AdminRoute";
@@ -38,6 +39,7 @@ const App = () => {
       <PageTracker />
       <SkipLinks />
       {!isAdmin && <Header />}
+      {!isAdmin && <WhatsAppFloat />}
       <main id="main-content">
         <Routes>
           {/* Halaman utama */}
